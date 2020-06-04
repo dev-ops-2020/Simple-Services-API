@@ -4,6 +4,7 @@
   "description": "A REST API for Simple Services Android App",
   "main": "app.js",
   "scripts": {
+    "start": "node src/app.js",
     "dev": "nodemon src/app.js"
   },
   "keywords": [],
