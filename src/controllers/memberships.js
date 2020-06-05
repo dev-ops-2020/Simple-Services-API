@@ -29,20 +29,19 @@ function ReadMembership(req, res) {
 
 function UpdateMembership(req, res) {
   let id = req.params.id;
-  let update = req.body;
-  MembershipsSchema.findByIdAndUpdate(id, update, (err, Membership) => {
+  let Membership = req.body;
+  MembershipsSchema.findByIdAndUpdate(id, Membership, (err, Memberships) => {
     if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: "Membership updated", membership: update });
+    res.status(200).send({ message: "Membership updated", membership: Membership });
   });
 }
 
 function DeleteMembership(req, res) {
   let id = req.params.id;
-  MembershipsSchema.findById(id, (err, Membership) => {
-    Membership.remove((err) => {
-      if (err) res.status(500).send(message, err);
-      res.status(200).send({ message: "Membership deleted", membership: Membership });
-    });
+  let Membership = req.body;
+  MembershipsSchema.findByIdAndDelete(id, Membership, (err, Memberships) => {
+    if (err) res.status(500).send(message, err);
+    res.status(200).send({ message: "Membership deleted", membership: Membership });
   });
 }
 
