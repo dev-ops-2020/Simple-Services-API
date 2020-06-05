@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const MembershipsSchema = Schema(
+const BusinessesSchema = Schema(
   {
     id: {
       type: String,
@@ -14,40 +14,56 @@ const MembershipsSchema = Schema(
       type: String,
       require: true,
     },
-    color: {
+    slogan: {
       type: String,
       require: true,
     },
-    priority: {
+    owner: {
+      type: String,
+      require: true,
+    },
+    score: {
       type: Number,
-      require: true,
-    },
-    extras: {
-      type: String,
       require: true,
     },
     status: {
       type: Boolean,
       require: true,
     },
-    price: {
+    logo: {
+      type: String,
+      require: true,
+    },
+    pictures: {
+      type: [],
+      require: false,
+    },
+    phones: {
+      type: [],
+      require: false,
+    },
+    schedule: {
+      type: [],
+      require: false,
+    },
+    networks: {
+      type: [],
+      require: true,
+    },
+    categories: {
+      type: [],
+      require: true,
+    },
+    latitude: {
       type: Number,
       require: true,
     },
-    priceOff: {
+    longitude: {
       type: Number,
       require: true,
     },
-    priceExtraCoupon: {
-      type: Number,
-      require: true,
-    },
-    quantityCoupons: {
-      type: Number,
-      require: true,
-    },
-    quantityPromotion: {
-      type: Number,
+    idMembership: {
+      type: String,
       require: true,
     },
   },
@@ -56,4 +72,4 @@ const MembershipsSchema = Schema(
   }
 );
 
-module.exports = model("memberships", MembershipsSchema);
+module.exports = model("businesses", BusinessesSchema);

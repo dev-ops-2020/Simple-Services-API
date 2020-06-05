@@ -1,4 +1,4 @@
-const MembershipsSchema = require("../models/memberships");
+const MembershipsSchema = require('../models/memberships');
 
 function CreateMembership(req, res) {
   let Membership = new MembershipsSchema();
@@ -15,7 +15,7 @@ function CreateMembership(req, res) {
   Membership.quantityPromotions = req.body.quantityPromotions;
   Membership.save((err, Membership) => {
     if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: "Membership created", membership: Membership });
+    res.status(200).send({ message: 'Membership created', membership: Membership });
   });
 }
 
@@ -23,7 +23,7 @@ function ReadMembership(req, res) {
   let id = req.params.id;
   MembershipsSchema.findById(id, (err, Membership) => {
     if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: "Membership read", membership: Membership });
+    res.status(200).send({ message: 'Membership read', membership: Membership });
   });
 }
 
@@ -32,7 +32,7 @@ function UpdateMembership(req, res) {
   let Membership = req.body;
   MembershipsSchema.findByIdAndUpdate(id, Membership, (err, Memberships) => {
     if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: "Membership updated", membership: Membership });
+    res.status(200).send({ message: 'Membership updated', membership: Membership });
   });
 }
 
@@ -41,14 +41,14 @@ function DeleteMembership(req, res) {
   let Membership = req.body;
   MembershipsSchema.findByIdAndDelete(id, Membership, (err, Memberships) => {
     if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: "Membership deleted", membership: Membership });
+    res.status(200).send({ message: 'Membership deleted', membership: Membership });
   });
 }
 
 function ListMemberships(req, res) {
   MembershipsSchema.find({}, (err, Memberships) => {
     if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: "Ok", memberships: Memberships });
+    res.status(200).send({ message: 'Ok', memberships: Memberships });
   });
 }
 
@@ -57,5 +57,5 @@ module.exports = {
   ReadMembership,
   UpdateMembership,
   DeleteMembership,
-  ListMemberships,
+  ListMemberships
 };

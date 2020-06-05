@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
@@ -6,5 +6,5 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((db) => console.log("Connection complete"))
+  .then((db) => console.log('Connection complete'))
   .catch((err) => console.log(err));
