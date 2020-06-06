@@ -14,16 +14,16 @@ function CreateMembership(req, res) {
   Membership.quantityCoupons = req.body.quantityCoupons;
   Membership.quantityPromotions = req.body.quantityPromotions;
   Membership.save((err, Membership) => {
-    if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: 'Membership created', membership: Membership });
+    if (err) res.status(500).json({message: err});
+    res.status(200).json({ message: 'Membership created', membership: Membership });
   });
 }
 
 function ReadMembership(req, res) {
   let id = req.params.id;
   MembershipsSchema.findById(id, (err, Membership) => {
-    if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: 'Membership read', membership: Membership });
+    if (err) res.status(500).json({message: err});
+    res.status(200).json({ message: 'Membership read', membership: Membership });
   });
 }
 
@@ -31,8 +31,8 @@ function UpdateMembership(req, res) {
   let id = req.params.id;
   let Membership = req.body;
   MembershipsSchema.findByIdAndUpdate(id, Membership, (err, Memberships) => {
-    if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: 'Membership updated', membership: Membership });
+    if (err) res.status(500).json({message: err});
+    res.status(200).json({ message: 'Membership updated', membership: Membership });
   });
 }
 
@@ -40,15 +40,15 @@ function DeleteMembership(req, res) {
   let id = req.params.id;
   let Membership = req.body;
   MembershipsSchema.findByIdAndDelete(id, Membership, (err, Memberships) => {
-    if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: 'Membership deleted', membership: Membership });
+    if (err) res.status(500).json({message: err});
+    res.status(200).json({ message: 'Membership deleted', membership: Membership });
   });
 }
 
 function ListMemberships(req, res) {
   MembershipsSchema.find({}, (err, Memberships) => {
-    if (err) res.status(500).send(message, err);
-    res.status(200).send({ message: 'Ok', memberships: Memberships });
+    if (err) res.status(500).json({message: err});
+    res.status(200).json({ message: 'Ok', memberships: Memberships });
   });
 }
 

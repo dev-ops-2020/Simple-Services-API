@@ -30,5 +30,6 @@ router.get('/businesses/:id', BusinessesController.ReadBusiness);
 router.put('/businesses/:id', BusinessesController.UpdateBusiness);
 router.delete('/businesses/:id', BusinessesController.DeleteBusiness);
 router.get('/businesses', BusinessesController.ListBusinesses);
+router.get('/businesses/category/:id', BusinessesController.ListBusinessesByCategory);
 
 module.exports = router;
