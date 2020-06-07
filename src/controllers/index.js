@@ -5,7 +5,7 @@ function Index(req, res) {
     message: 'REST-API Simple Services',
     version: '1.0.0',
   };
-  res.json(response);
+  res.send(response);
 }
 
 function NotFound(req, res) {
@@ -13,7 +13,7 @@ function NotFound(req, res) {
     message: 'Resource Not Found',
     error: 404
   }
-  res.json(response)
+  res.send(response)
 }
 
 module.exports = {

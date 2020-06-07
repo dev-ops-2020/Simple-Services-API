@@ -18,16 +18,16 @@ function CreateBusiness(req, res) {
   Business.longitude = req.body.longitude;
   Business.idMembership = req.body.idMembership;
   Business.save((err, Business) => {
-    if (err) res.status(500).json({message: err});
-    res.status(200).json({ message: 'Business created', business: Business });
+    if (err) res.status(500).send({message: err});
+    res.status(200).send({ message: 'Business created', business: Business });
   });
 }
 
 function ReadBusiness(req, res) {
   let id = req.params.id;
   BusinessSchema.findById(id, (err, Business) => {
-    if (err) res.status(500).json({message: err});
-    res.status(200).json({ message: 'Business read', business: Business });
+    if (err) res.status(500).send({message: err});
+    res.status(200).send({ message: 'Business read', business: Business });
   });
 }
 
@@ -35,8 +35,8 @@ function UpdateBusiness(req, res) {
   let id = req.params.id;
   let Business = req.body;
   BusinessSchema.findByIdAndUpdate(id, Business, (err, Businesses) => {
-    if (err) res.status(500).json({message: err});
-    res.status(200).json({ message: 'Business updated', business: Business });
+    if (err) res.status(500).send({message: err});
+    res.status(200).send({ message: 'Business updated', business: Business });
   });
 }
 
@@ -44,23 +44,23 @@ function DeleteBusiness(req, res) {
   let id = req.params.id;
   let Business = req.body;
   BusinessSchema.findByIdAndDelete(id, Business, (err, Businesses) => {
-    if (err) res.status(500).json({message: err});
-    res.status(200).json({ message: 'Business deleted', business: Business });
+    if (err) res.status(500).send({message: err});
+    res.status(200).send({ message: 'Business deleted', business: Business });
   });
 }
 
 function ListBusinesses(req, res) {
   BusinessSchema.find({}, (err, Businesses) => {
-    if (err) res.status(500).json({message: err});
-    res.status(200).json({ message: 'Ok', businesses: Businesses });
+    if (err) res.status(500).send({message: err});
+    res.status(200).send({ message: 'Ok', businesses: Businesses });
   });
 }
 
 function ListBusinessesByCategory(req, res) {
   let id = req.params.id;
   BusinessSchema.find({categories: {category: id}}, (err, Businesses) => {
-    if (err) res.status(500).json({message: err});
-    res.status(200).json({ message: 'Ok', businesses: Businesses });
+    if (err) res.status(500).send({message: err});
+    res.status(200).send({ message: 'Ok', businesses: Businesses });
   });
 }
 
