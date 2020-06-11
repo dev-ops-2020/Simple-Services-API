@@ -13,7 +13,7 @@ function CreateCategory(req, res) {
 
 function ReadCategory(req, res) {
   let id = req.params.id;
-  CategoriesSchema.findByid(id, (err, Category) => {
+  CategoriesSchema.findById(id, (err, Category) => {
     if (err) res.status(500).send({message: err});
     res.status(200).send({ message: 'Category read', category: Category });
   });
@@ -22,7 +22,7 @@ function ReadCategory(req, res) {
 function UpdateCategory(req, res) {
   let id = req.params.id;
   let Category = req.body;
-  CategoriesSchema.findByidAndUpdate(id, Category, (err, Categories) => {
+  CategoriesSchema.findByIdAndUpdate(id, Category, (err, Categories) => {
     if (err) res.status(500).send({message: err});
     res.status(200).send({ message: 'Category updated', category: Category });
   });
