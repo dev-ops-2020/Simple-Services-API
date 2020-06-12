@@ -6,6 +6,7 @@ const IndexController = require('../controllers/index');
 const CategoriesController = require('../controllers/categories');
 const MembershipsController = require('../controllers/memberships');
 const BusinessesController = require('../controllers/businesses');
+const CommentsController = require('../controllers/comments');
 
 // First route
 router.get('/', IndexController.Index);
@@ -31,5 +32,12 @@ router.put('/businesses/:id', BusinessesController.UpdateBusiness);
 router.delete('/businesses/:id', BusinessesController.DeleteBusiness);
 router.get('/businesses', BusinessesController.ListBusinesses);
 router.get('/businesses/category/:id', BusinessesController.ListBusinessesByCategory);
+
+// Comments
+router.post('/comments', CommentsController.CreateComment);
+router.get('/comments/:id', CommentsController.ReadComment);
+router.put('/comments/:id', CommentsController.UpdateComment);
+router.delete('/comments/:id', CommentsController.DeleteComment);
+router.get('/comments', CommentsController.ListComments)
 
 module.exports = router;
