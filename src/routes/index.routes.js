@@ -39,5 +39,6 @@ router.get('/comments/:id', CommentsController.ReadComment);
 router.put('/comments/:id', CommentsController.UpdateComment);
 router.delete('/comments/:id', CommentsController.DeleteComment);
 router.get('/comments', CommentsController.ListComments)
+router.get('/comments/business/:id', CommentsController.ListCommentsByBusiness)
 
 module.exports = router;

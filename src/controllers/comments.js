@@ -47,10 +47,19 @@ function ListComments(req, res) {
   });
 }
 
+function ListCommentsByBusiness(req, res) {
+  let id = req.params.id;
+  CommentsSchema.find({idBusiness: id}, (err, Comments) => {
+    if (err) res.status(500).send({message: err});
+    res.status(200).send({ message: 'Ok', comments: Comments });
+  });
+}
+
 module.exports = {
   CreateComment,
   ReadComment,
   UpdateComment,
   DeleteComment,
-  ListComments
+  ListComments,
+  ListCommentsByBusiness
 };
