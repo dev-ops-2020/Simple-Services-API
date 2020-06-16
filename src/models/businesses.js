@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const BusinessesSchema = Schema(
   {
@@ -24,15 +24,16 @@ const BusinessesSchema = Schema(
     },
     score: {
       type: Number,
-      require: true,
+      require: false,
     },
     status: {
       type: Boolean,
       require: true,
+      default: true, // TODO Change to false when production deployment
     },
     logo: {
       type: String,
-      require: true,
+      require: false,
     },
     pictures: {
       type: [],
@@ -48,7 +49,7 @@ const BusinessesSchema = Schema(
     },
     networks: {
       type: [],
-      require: true,
+      require: false,
     },
     categories: {
       type: [],
@@ -72,4 +73,4 @@ const BusinessesSchema = Schema(
   }
 );
 
-module.exports = model("businesses", BusinessesSchema);
+module.exports = model('businesses', BusinessesSchema);

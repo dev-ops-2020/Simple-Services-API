@@ -8,3 +8,4 @@ mongoose
   })
   .then((db) => console.log('Connection complete'))
   .catch((err) => console.log(err));
+mongoose.set('useFindAndModify', false);

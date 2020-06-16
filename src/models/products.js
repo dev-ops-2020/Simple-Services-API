@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const CategoriesSchema = Schema(
+const ProductsSchema = Schema(
   {
     id: {
       type: String,
@@ -8,15 +8,23 @@ const CategoriesSchema = Schema(
     },
     name: {
       type: String,
-      unique: true,
       require: true,
     },
     description: {
       type: String,
       require: true,
     },
-    icon: {
-      type: String,
+    available: {
+      type: Boolean,
+      require: true,
+      default: true,
+    },   
+    prices: {
+        type: [],
+        require: false,
+    },
+    pictures: {
+      type: [],
       require: false,
     },
     status: {
@@ -24,10 +32,18 @@ const CategoriesSchema = Schema(
       require: true,
       default: true, // TODO Change to false when production deployment
     },
+    categories: {
+        type: [],
+        require: true,
+    },
+    idEstablishment: {
+      type: String,
+      require: true,
+    },    
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = model('categories', CategoriesSchema);
+module.exports = model('products', ProductsSchema);

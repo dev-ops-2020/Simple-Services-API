@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const MembershipsSchema = Schema(
   {
@@ -8,6 +8,7 @@ const MembershipsSchema = Schema(
     },
     name: {
       type: String,
+      unique: true,
       require: true,
     },
     description: {
@@ -29,6 +30,7 @@ const MembershipsSchema = Schema(
     status: {
       type: Boolean,
       require: true,
+      default: true, // TODO Change to false when production deployment
     },
     price: {
       type: Number,
@@ -56,4 +58,4 @@ const MembershipsSchema = Schema(
   }
 );
 
-module.exports = model("memberships", MembershipsSchema);
+module.exports = model('memberships', MembershipsSchema);

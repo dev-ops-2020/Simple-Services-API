@@ -4,7 +4,7 @@ const app = express();
 require('dotenv').config();
 require('./database');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api', require('./routes/index.routes'));
 app.set('port', process.env.PORT || 3000);

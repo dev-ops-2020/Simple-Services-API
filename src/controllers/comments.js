@@ -9,16 +9,22 @@ function CreateComment(req, res) {
   Comment.pictureUser = req.body.pictureUser;
   Comment.idBusiness = req.body.idBusiness;
   Comment.save((err, Comment) => {
-    if (err) res.status(500).send({message: err});
-    res.status(200).send({ message: 'Comment created', comment: Comment });
+    if (err) {
+      return res.status(500).send({message: 'Error posting comment'});
+    } else {
+    return res.status(200).send({message: 'Comment created', comment: Comment});
+    }
   });
 }
 
 function ReadComment(req, res) {
   let id = req.params.id;
   CommentsSchema.findById(id, (err, Comment) => {
-    if (err) res.status(500).send({message: err});
-    res.status(200).send({ message: 'Comment read', comment: Comment });
+    if (!Comment) {
+      return res.status(500).send({message: 'Comment not found'});
+    } else {      
+      return res.status(200).send({message: 'Comment read', comment: Comment});
+    }
   });
 }
 
@@ -26,32 +32,44 @@ function UpdateComment(req, res) {
   let id = req.params.id;
   let Comment = req.body;
   CommentsSchema.findByIdAndUpdate(id, Comment, (err, Comment) => {
-    if (err) res.status(500).send({message: err});
-    res.status(200).send({ message: 'Comment updated', comment: Comment });
+    if (err) {
+      return res.status(500).send({message: 'Update failed'});
+    } else {      
+      return res.status(200).send({message: 'Comment updated'});
+    }
   });
 }
 
 function DeleteComment(req, res) {
   let id = req.params.id;
   let Comment = req.body;
-  CommentsSchema.findByIdAndDelete(id, Comment, (err, Categories) => {
-    if (err) res.status(500).send({message: err});
-    res.status(200).send({ message: 'Comment deleted', comment: Comment });
+  CommentsSchema.findByIdAndDelete(id, Comment, (err, Comment) => {
+    if (err) {
+      return res.status(500).send({message: 'Error deleting comment'});
+    } else {
+    return res.status(200).send({message: 'Comment deleted'});
+  }
   });
 }
 
 function ListComments(req, res) {
   CommentsSchema.find({}, (err, Comments) => {
-    if (err) res.status(500).send({message: err});
-    res.status(200).send({ message: 'Ok', comments: Comments });
+    if (Comments.length == 0) {
+      return res.status(500).send({message: 'No comments to show'});
+    } else {
+      return res.status(200).send({message: 'Ok', comments: Comments});
+    }
   });
 }
 
 function ListCommentsByBusiness(req, res) {
   let id = req.params.id;
   CommentsSchema.find({idBusiness: id}, (err, Comments) => {
-    if (err) res.status(500).send({message: err});
-    res.status(200).send({ message: 'Ok', comments: Comments });
+    if (Comments.length == 0) {
+      return res.status(500).send({message: 'No comments to show'});
+    } else {
+      return res.status(200).send({message: 'Ok', comments: Comments});
+    }
   });
 }
 
