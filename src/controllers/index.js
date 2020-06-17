@@ -11,7 +11,7 @@ function Index(req, res) {
 function NotFound(req, res) {
   const response = {
     message: 'Resource Not Found',
-    error: 204
+    error: 404
   }
   res.send(response)
 }
