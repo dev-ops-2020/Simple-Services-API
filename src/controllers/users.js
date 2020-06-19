@@ -37,6 +37,7 @@ function SignIn(req, res) {
         if (!match) {
           return res.status(202).send({message: 'Passwords do not match'});
         } else {
+          User.token = service.createToken(User);
           return res.status(200).send({message: 'Ok', user: User});
         }     
       });
