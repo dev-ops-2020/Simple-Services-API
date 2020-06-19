@@ -15,11 +15,11 @@ function SignUp(req, res) {
   bcrypt.hash(User.password, bcrypt.genSaltSync(7), (err, hash) => {
     User.password = hash;
     User.picture = 'https://api.adorable.io/avatars/'+User.alias;
+    User.token = service.createToken(User);
     User.save((err) => {
       if (err) {
         return res.status(202).send({message: 'Error creating account'});
       } else {
-        User.token = service.createToken(User);
         return res.status(200).send({message: 'Ok', user: User});
       }
     })
@@ -37,7 +37,6 @@ function SignIn(req, res) {
         if (!match) {
           return res.status(202).send({message: 'Passwords do not match'});
         } else {
-          User.token = service.createToken(User);
           return res.status(200).send({message: 'Ok', user: User});
         }     
       });
