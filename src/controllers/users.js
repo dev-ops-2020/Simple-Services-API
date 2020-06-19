@@ -10,6 +10,7 @@ function SignUp(req, res) {
   User.email = req.body.email;
   User.password = req.body.password;
   User.rol = req.body.rol;
+  User.idDevice = req.body.idDevice;
 
   bcrypt.hash(User.password, bcrypt.genSaltSync(7), (err, hash) => {
     User.password = hash;
@@ -18,7 +19,8 @@ function SignUp(req, res) {
       if (err) {
         return res.status(202).send({message: 'Error creating account'});
       } else {
-      return res.status(200).send({message: 'Ok', user: User, token: service.createToken(User)});
+        User.token = service.createToken(User);
+        return res.status(200).send({message: 'Ok', user: User});
       }
     })
   });  
@@ -35,7 +37,7 @@ function SignIn(req, res) {
         if (!match) {
           return res.status(202).send({message: 'Passwords do not match'});
         } else {
-          return res.status(200).send({message: 'Ok', user: User, token: service.createToken(User)});
+          return res.status(200).send({message: 'Ok', user: User});
         }     
       });
     }

@@ -31,7 +31,7 @@ const UsersSchema = Schema(
     },
     picture: {
       type: String,
-      require: false,
+      require: true,
     },
     qrCode: {
       type: String,
@@ -51,6 +51,16 @@ const UsersSchema = Schema(
       enum: ['Admin', 'Business', 'Client'],
       require: true,
       default: 'Client',
+    },
+    idDevice: {
+      type: String,
+      require: true,
+      Default: '0000'
+    },
+    token: {
+      type: String,
+      require: true,
+      Default: '0000'
     },
     businessFav: {      
       type: [],
