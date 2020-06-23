@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const ProductsSchema = Schema(
+const ServicesSchema = Schema(
   {
     id: {
       type: String,
@@ -46,4 +46,4 @@ const ProductsSchema = Schema(
   }
 );
 
-module.exports = model('products', ProductsSchema);
+module.exports = model('services', ServicesSchema);

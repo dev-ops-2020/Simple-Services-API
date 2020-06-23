@@ -7,8 +7,9 @@ const CategoriesController = require('../controllers/categories');
 const MembershipsController = require('../controllers/memberships');
 const BusinessesController = require('../controllers/businesses');
 const CommentsController = require('../controllers/comments');
-const ProductsController = require('../controllers/products');
 const UsersController = require('../controllers/users');
+const ProductsController = require('../controllers/products');
+const ServicesController = require('../controllers/services');
 
 // First route
 router.get('/', IndexController.Index);
@@ -46,6 +47,14 @@ router.post('/comments/:id', CommentsController.DeleteComment);
 router.get('/comments', CommentsController.ListComments)
 router.get('/comments/business/:id', CommentsController.ListCommentsByBusiness)
 
+// Users
+router.post('/signup', UsersController.SignUp);
+router.post('/signin', UsersController.SignIn);
+router.get('/users/:id', UsersController.ReadUser);
+router.put('/users/:id', UsersController.UpdateUser);
+router.post('/users/:id', UsersController.DeleteUser);
+router.get('/users', UsersController.ListUsers);
+
 //Products
 router.post('/products', ProductsController.CreateProduct);
 router.get('/products/:id', ProductsController.ReadProduct);
@@ -55,12 +64,13 @@ router.get('/products', ProductsController.ListProducts);
 router.get('/products/business/:id', ProductsController.ListProductsByBusiness);
 router.get('/products/category/:id', ProductsController.ListProductsByCategory);
 
-// Users
-router.post('/signup', UsersController.SignUp);
-router.post('/signin', UsersController.SignIn);
-router.get('/users/:id', UsersController.ReadUser);
-router.put('/users/:id', UsersController.UpdateUser);
-router.post('/users/:id', UsersController.DeleteUser);
-router.get('/users', UsersController.ListUsers);
+//Services
+router.post('/services', ServicesController.CreateService);
+router.get('/services/:id', ServicesController.ReadService);
+router.put('/services/:id', ServicesController.UpdateService);
+router.post('/services/:id', ServicesController.DeleteService);
+router.get('/services', ServicesController.ListServices);
+router.get('/services/business/:id', ServicesController.ListServicesByBusiness);
+router.get('/services/category/:id', ServicesController.ListServicesByCategory);
 
 module.exports = router;
