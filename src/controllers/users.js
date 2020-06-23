@@ -30,7 +30,7 @@ function SignIn(req, res) {
   let alias = req.body.alias;
   let password = req.body.password;
   UsersSchema.findOne({alias: alias}, (err, User) => {
-    if (!User) {
+    if (!User || !User.status) {
       return res.status(202).send({message: 'User not found'});
     } else {
       bcrypt.compare(password, User.password, function(err, match) {

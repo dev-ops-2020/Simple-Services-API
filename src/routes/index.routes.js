@@ -60,7 +60,7 @@ router.post('/signup', UsersController.SignUp);
 router.post('/signin', UsersController.SignIn);
 router.get('/users/:id', UsersController.ReadUser);
 router.put('/users/:id', UsersController.UpdateUser);
-router.post('/users/:id', UsersController.DeleteUser); // TODO Change status to 0
+router.post('/users/:id', UsersController.DeleteUser);
 router.get('/users', UsersController.ListUsers);
 
 module.exports = router;
