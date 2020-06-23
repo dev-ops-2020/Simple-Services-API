@@ -9,7 +9,7 @@ function CreateService(req, res) {
   Service.pictures = req.body.pictures;
   Service.status = req.body.status;
   Service.categories = req.body.categories;
-  Service.idEstablishment = req.body.idEstablishment;
+  Service.idBusiness = req.body.idBusiness;
   Service.save((err, Service) => {
     if (err) {
       return res.status(202).send({message: 'Error storing Service'});

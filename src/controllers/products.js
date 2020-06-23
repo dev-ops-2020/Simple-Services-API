@@ -9,7 +9,7 @@ function CreateProduct(req, res) {
   Product.pictures = req.body.pictures;
   Product.status = req.body.status;
   Product.categories = req.body.categories;
-  Product.idEstablishment = req.body.idEstablishment;
+  Product.idBusiness = req.body.idBusiness;
   Product.save((err, Product) => {
     if (err) {
       return res.status(202).send({message: 'Error storing Product'});
