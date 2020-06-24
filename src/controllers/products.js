@@ -7,7 +7,6 @@ function CreateProduct(req, res) {
   Product.available = req.body.available;
   Product.prices = req.body.prices;
   Product.pictures = req.body.pictures;
-  Product.status = req.body.status;
   Product.categories = req.body.categories;
   Product.idBusiness = req.body.idBusiness;
   Product.save((err, Product) => {
@@ -82,7 +81,7 @@ function ListProductsByCategory(req, res) {
 
 function ListProductsByBusiness(req, res) {
     let id = req.params.id;
-    ProductsSchema.find({idEstablishment: id}, (err, Products) => {
+    ProductsSchema.find({idBusiness: id}, (err, Products) => {
       if (Products.length == 0) {
         return res.status(202).send({message: 'No products to show'});
       } else {

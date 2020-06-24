@@ -82,7 +82,7 @@ function ListServicesByCategory(req, res) {
 
 function ListServicesByBusiness(req, res) {
     let id = req.params.id;
-    ServicesSchema.find({idEstablishment: id}, (err, Services) => {
+    ServicesSchema.find({idBusiness: id}, (err, Services) => {
       if (Services.length == 0) {
         return res.status(202).send({message: 'No services to show'});
       } else {
