@@ -6,12 +6,13 @@ function CreateBusiness(req, res) {
   Business.description = req.body.description;
   Business.slogan = req.body.slogan;
   Business.owner = req.body.owner;
-  Business.score = req.body.score;
   Business.logo = req.body.logo;
   Business.pictures = req.body.pictures;
-  Business.phones = req.body.phones;
+  Business.phone = req.body.phone;
+  Business.fb = req.body.fb;
+  Business.ig = req.body.ig;
+  Business.wa = req.body.wa;
   Business.schedule = req.body.schedule;
-  Business.networks = req.body.networks;
   Business.categories = req.body.categories;
   Business.latitude = req.body.latitude;
   Business.longitude = req.body.longitude;

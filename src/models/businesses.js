@@ -25,6 +25,7 @@ const BusinessesSchema = Schema(
     score: {
       type: Number,
       require: false,
+      default: 5 // TODO Change value when production deployment
     },
     status: {
       type: Boolean,
@@ -39,15 +40,23 @@ const BusinessesSchema = Schema(
       type: [],
       require: false,
     },
-    phones: {
-      type: [],
+    phone: {
+      type: String,
+      require: false,
+    },
+    fb: {
+      type: String,
+      require: false,
+    },
+    ig: {
+      type: String,
+      require: false,
+    },
+    wa: {
+      type: String,
       require: false,
     },
     schedule: {
-      type: [],
-      require: false,
-    },
-    networks: {
       type: [],
       require: false,
     },
