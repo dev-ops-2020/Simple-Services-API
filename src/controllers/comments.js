@@ -42,8 +42,7 @@ function UpdateComment(req, res) {
 
 function DeleteComment(req, res) {
   let id = req.params.id;
-  let Comment = req.body;
-  CommentsSchema.findByIdAndDelete(id, Comment, (err, Comment) => {
+  CommentsSchema.findByIdAndDelete(id, (err, Comment) => {
     if (err) {
       return res.status(202).send({message: 'Error deleting comment'});
     } else {

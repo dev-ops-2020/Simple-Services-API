@@ -9,7 +9,7 @@ function SignUp(req, res) {
   User.phone = req.body.phone;
   User.email = req.body.email;
   User.password = req.body.password;
-  User.rol = req.body.rol;
+  User.rol = req.body.rol; // TODO Check this field...
   User.idDevice = req.body.idDevice;
 
   bcrypt.hash(User.password, bcrypt.genSaltSync(7), (err, hash) => {

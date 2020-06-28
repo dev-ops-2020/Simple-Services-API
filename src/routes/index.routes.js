@@ -10,9 +10,10 @@ const CommentsController = require('../controllers/comments');
 const UsersController = require('../controllers/users');
 const ProductsController = require('../controllers/products');
 const ServicesController = require('../controllers/services');
+const CartController = require('../controllers/cart');
 
 // First route
-router.get('/', IndexController.Index);
+router.get('', IndexController.Index);
 
 // TODO Change status to 0 on Delete Methods
 
@@ -37,7 +38,7 @@ router.put('/businesses/:id', BusinessesController.UpdateBusiness);
 router.post('/businesses/:id', BusinessesController.DeleteBusiness);
 router.get('/businesses', BusinessesController.ListBusinesses);
 router.get('/businesses/category/:id', BusinessesController.ListBusinessesByCategory);
-//router.get('/businesses/user/:id', BusinessesController.ListBusinessesByUserFav);
+//router.get('businesses/user/:id', BusinessesController.ListBusinessesByUserFav);
 
 // Comments
 router.post('/comments', CommentsController.CreateComment);
@@ -72,5 +73,12 @@ router.post('/services/:id', ServicesController.DeleteService);
 router.get('/services', ServicesController.ListServices);
 router.get('/services/business/:id', ServicesController.ListServicesByBusiness);
 router.get('/services/category/:id', ServicesController.ListServicesByCategory);
+
+//Cart
+router.post('/cart/', CartController.CreateCart);
+router.get('/cart/:id', CartController.ReadCart);
+router.put('/cart/:cartId/:businessId', CartController.UpdateCart);
+router.post('/cart/:id', CartController.DeleteCart);
+//router.post('cart/product/:id', CartController.AddProduct);
 
 module.exports = router;

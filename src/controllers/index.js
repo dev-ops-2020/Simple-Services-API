@@ -8,13 +8,14 @@ function Index(req, res) {
   res.send(response);
 }
 
-function NotFound(req, res) {
+function NotFound(req, res, next) {
   const response = {
     message: 'Resource Not Found',
     error: 202
     //error: 404
   }
-  res.send(response)
+  res.send(response);
+  next(error);
 }
 
 module.exports = {

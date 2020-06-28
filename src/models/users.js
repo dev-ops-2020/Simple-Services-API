@@ -62,11 +62,11 @@ const UsersSchema = Schema(
       require: true,
       Default: '0000'
     },
-    businessFav: {      
+    businessFav: {
       type: [],
       require: false,
     },
-    coupons: {      
+    coupons: {
       type: [],
       require: false,
     },

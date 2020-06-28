@@ -88,7 +88,7 @@ function ListProductsByBusiness(req, res) {
         return res.status(200).send({message: 'Ok', products: Products});
       }
     });
-  }
+}
   
 function ListProductsByCategory(req, res) {
   let id = req.params.id;
