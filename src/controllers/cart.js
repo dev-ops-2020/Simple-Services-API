@@ -27,28 +27,22 @@ function ReadCart(req, res) {
 
 function UpdateCart(req, res) {
   let cartId = req.params.cartId;
-  CartSchema.findById(cartId, (err, Cart) => {
-    if (!Cart) {
-      return res.status(202).send({message: 'Error'}); // Cart doesn't exist
+  let businessId = req.params.businessId;
+  CartSchema.findOne({businessId}, (err, Business) => {
+    if (!Business) {
+      return res.status(202).send({message: 'Wrong business'}); // Cart from another business
     } else {
-      let businessId = req.params.businessId;
-      CartSchema.findOne(businessId, (err, Business) => {
-        if (!Business) {
-          return res.status(202).send({message: 'Error'}); // Cart from another business
+      let productId = req.body.productId;
+      let qty = req.body.qty;
+      CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
+        if (Cart) {
+          CartSchema.updateOne({'products.productId': productId}, {$set: {'products.$.qty': qty}}, (err, Cart1) => {
+            return res.status(200).send({message: 'Product updated'});
+          });
         } else {
-          let productId = req.body.productId;
-          let qty = req.body.qty;
-          CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
-            if (Cart) {
-              CartSchema.updateOne({'products.productId': productId}, {$set: {'products.$.qty': qty}}, (err, Cart1) => {
-                return res.status(200).send({message: 'Product updated'});
-              });
-            } else {
-              let Product = req.body;
-              CartSchema.findByIdAndUpdate(cartId, {$push: {products: Product}}, (err, Cart) => {
-                return res.status(200).send({message: 'Product added'});
-              });
-            }
+          let Product = req.body;
+          CartSchema.findByIdAndUpdate(cartId, {$push: {products: Product}}, (err, Cart) => {
+            return res.status(200).send({message: 'Product added'});
           });
         }
       });
