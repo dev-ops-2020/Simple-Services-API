@@ -20,7 +20,7 @@ function ReadCart(req, res) {
     if (!Cart) {
       return res.status(202).send({message: 'Error'});
     } else {      
-      return res.status(200).send({message: 'Ok', cart: Cart});
+      return res.status(200).send({message: 'Ok', products: Cart.products});
     }
   });
 }
