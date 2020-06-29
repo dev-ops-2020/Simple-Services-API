@@ -32,7 +32,7 @@ function UpdateCart(req, res) {
       return res.status(202).send({message: 'Error'}); // Cart doesn't exist
     } else {
       let businessId = req.params.businessId;
-      CartSchema.findById(businessId, (err, Business) => {
+      CartSchema.findOne(businessId, (err, Business) => {
         if (!Business) {
           return res.status(202).send({message: 'Error'}); // Cart from another business
         } else {
