@@ -18,7 +18,7 @@ function ReadCart(req, res) {
   let id = req.params.id;
   CartSchema.findById(id, (err, Cart) => {
     if (!Cart) {
-      return res.status(202).send({message: 'Error'});
+      return res.status(202).send({message: 'Error'}); // Cart doesn't exist
     } else {      
       return res.status(200).send({message: 'Ok', products: Cart.products});
     }
@@ -32,7 +32,7 @@ function UpdateCart(req, res) {
       return res.status(202).send({message: 'Error'}); // Cart doesn't exist
     } else {
       let businessId = req.params.businessId;
-      BusinessesSchema.findById(businessId, (err, Business) => {
+      CartSchema.findById(businessId, (err, Business) => {
         if (!Business) {
           return res.status(202).send({message: 'Error'}); // Cart from another business
         } else {
