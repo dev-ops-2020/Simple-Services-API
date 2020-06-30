@@ -8,6 +8,14 @@ function Index(req, res) {
   res.send(response);
 }
 
+function Terms(req, res) {
+  const response = {
+    header: 'Términos y condiciones de Simple Services',
+    message: 'Acá van a ir los Términos y condiciones, los pondré cuando Carlitus los haga :v'
+  };
+  res.send(response);
+}
+
 function NotFound(req, res, next) {
   const response = {
     message: 'Resource Not Found',
@@ -20,5 +28,6 @@ function NotFound(req, res, next) {
 
 module.exports = {
   Index,
+  Terms,
   NotFound
 };

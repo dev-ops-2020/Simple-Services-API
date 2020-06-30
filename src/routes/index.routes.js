@@ -14,6 +14,7 @@ const CartController = require('../controllers/cart');
 
 // First route
 router.get('', IndexController.Index);
+router.get('/terms', IndexController.Terms);
 
 // Categories
 router.post('/categories', CategoriesController.CreateCategory);
