@@ -61,9 +61,30 @@ function DeleteCart(req, res) {
   });
 }
 
+function DeleteCartProduct(req, res) {
+  let cartId = req.params.cartId;
+  CartSchema.findById(cartId, (err, Cart) => {
+    if (!Cart) {
+      return res.status(202).send({message: 'Error'}); // Cart doesn't exist
+    } else {      
+      let productId = req.params.productId;
+      CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
+        if (Cart) {
+          CartSchema.findByIdAndUpdate(cartId, {$pull: {products: Product}}, (err, Cart) => {
+            return res.status(200).send({message: 'Product deleted'});
+          });
+        } else {
+          return res.status(202).send({message: 'Product not found'});
+        }      
+      });
+    }
+  });  
+}
+
 module.exports = {
   CreateCart,
   ReadCart,
   UpdateCart,
-  DeleteCart
+  DeleteCart,
+  DeleteCartProduct
 };

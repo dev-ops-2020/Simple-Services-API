@@ -77,5 +77,6 @@ router.post('/cart/', CartController.CreateCart);
 router.get('/cart/:id', CartController.ReadCart);
 router.put('/cart/:cartId/:businessId', CartController.UpdateCart);
 router.post('/cart/:id', CartController.DeleteCart);
+router.post('/cart/:cartId/:productId', CartController.DeleteCartProduct);
 
 module.exports = router;
