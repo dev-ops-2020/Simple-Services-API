@@ -71,7 +71,7 @@ function DeleteCartProduct(req, res) {
       CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
         if (Cart) {
           let Product = req.body;
-          CartSchema.updateOne(cartId, {$pull: {products: Product}}, (err, Cart) => {
+          CartSchema.updateOne({'products.productId': productId}, {$pull: {products: Product}}, (err, Cart) => {
             return res.status(200).send({message: 'Product deleted'});
           });
         } else {
