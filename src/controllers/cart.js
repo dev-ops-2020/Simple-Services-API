@@ -70,6 +70,7 @@ function DeleteCartProduct(req, res) {
       let productId = req.params.productId;
       CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
         if (Cart) {
+          let Product = req.body;
           CartSchema.findByIdAndUpdate(cartId, {$pull: {products: Product}}, (err, Cart) => {
             return res.status(200).send({message: 'Product deleted'});
           });
