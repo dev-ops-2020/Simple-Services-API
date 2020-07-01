@@ -27,27 +27,34 @@ function ReadCart(req, res) {
 
 function UpdateCart(req, res) {
   let cartId = req.params.cartId;
+  let userId = req.params.userId;
   let businessId = req.params.businessId;
-  CartSchema.findOne({businessId}, (err, Business) => {
-    if (!Business) {
-      return res.status(202).send({message: 'Wrong business'}); // Cart from another business
+  CartSchema.findOne({userId}, (err, User) => {
+    if (!User) {
+      res.status(202).send({message: 'Wrong user'}); // Cart from other user
     } else {
-      let productId = req.body.productId;
-      let qty = req.body.qty;
-      CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
-        if (Cart) {
-          CartSchema.updateOne({'products.productId': productId}, {$set: {'products.$.qty': qty}}, (err, Cart1) => {
-            return res.status(200).send({message: 'Product updated'});
-          });
+      CartSchema.findOne({businessId}, (err, Business) => {
+        if (!Business) {
+          return res.status(202).send({message: 'Wrong business'}); // Cart from other business
         } else {
-          let Product = req.body;
-          CartSchema.findByIdAndUpdate(cartId, {$push: {products: Product}}, (err, Cart) => {
-            return res.status(200).send({message: 'Product added'});
+          let productId = req.body.productId;
+          let qty = req.body.qty;
+          CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
+            if (Cart) {
+              CartSchema.updateOne({'products.productId': productId}, {$set: {'products.$.qty': qty}}, (err, Cart1) => {
+                return res.status(200).send({message: 'Product updated'});
+              });
+            } else {
+              let Product = req.body;
+              CartSchema.findByIdAndUpdate(cartId, {$push: {products: Product}}, (err, Cart) => {
+                return res.status(200).send({message: 'Product added'});
+              });
+            }
           });
         }
       });
     }
-  });
+  })  
 }
 
 function DeleteCart(req, res) {
