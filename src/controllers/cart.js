@@ -15,12 +15,26 @@ function CreateCart(req, res) {
 }
 
 function ReadCart(req, res) {
-  let id = req.params.id;
-  CartSchema.findById(id, (err, Cart) => {
-    if (!Cart) {
-      return res.status(202).send({message: 'Error'}); // Cart doesn't exist
-    } else {      
-      return res.status(200).send({message: 'Ok', products: Cart.products});
+  let cartId = req.params.cartId;
+  let userId = req.params.userId;
+  let businessId = req.params.businessId;
+  CartSchema.findOne({userId}, (err, User) => {
+    if (!User) {
+      res.status(202).send({message: 'Wrong user'}); // Cart from other user
+    } else {
+      CartSchema.findOne({businessId}, (err, Business) => {
+        if (!Business) {
+          return res.status(202).send({message: 'Wrong business'}); // Cart from other business
+        } else {
+          CartSchema.findById(cartId, (err, Cart) => {
+            if (!Cart) {
+              return res.status(202).send({message: 'Wrong cart'}); // Cart doesn't exist
+            } else {
+              return res.status(200).send({message: 'Ok', products: Cart.products});
+            }
+          });
+        }
+      });
     }
   });
 }
@@ -54,7 +68,7 @@ function UpdateCart(req, res) {
         }
       });
     }
-  })  
+  });
 }
 
 function DeleteCart(req, res) {
