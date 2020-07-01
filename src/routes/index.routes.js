@@ -76,7 +76,7 @@ router.get('/services/category/:id', ServicesController.ListServicesByCategory);
 //Cart
 router.post('/cart/', CartController.CreateCart);
 router.get('/cart/:id', CartController.ReadCart);
-router.put('/cart/:cartId/:businessId/:userId', CartController.UpdateCart);
+router.put('/cart/:cartId/:userId/:businessId', CartController.UpdateCart);
 router.post('/cart/:id', CartController.DeleteCart);
 router.post('/cart/:cartId/:productId', CartController.DeleteCartProduct);
 
