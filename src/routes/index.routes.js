@@ -31,6 +31,7 @@ router.post('/memberships/:id', MembershipsController.DeleteMembership);
 router.get('/memberships', MembershipsController.ListMemberships);
 
 // Businesses
+router.post('/login', BusinessesController.LogIn);
 router.post('/businesses', BusinessesController.CreateBusiness);
 router.get('/businesses/:id', BusinessesController.ReadBusiness);
 router.put('/businesses/:id', BusinessesController.UpdateBusiness);

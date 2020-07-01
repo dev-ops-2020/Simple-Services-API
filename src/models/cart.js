@@ -4,23 +4,23 @@ const CartSchema = Schema(
   {
     id: {
       type: String,
-      require: false,
+      require: false
     },
     userId: {
       type: String,
-      require: true,
+      require: true
     },
     businessId: {
       type: String,
-      require: true,
+      require: true
     },
     products: {      
       type: [],
-      require: false,
-    },
+      require: false
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

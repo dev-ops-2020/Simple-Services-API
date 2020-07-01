@@ -4,35 +4,35 @@ const CommentsSchema = Schema(
   {
     id: {
       type: String,
-      require: false,
+      require: false
     },
     comment: {
       type: String,
-      require: true,
+      require: true
     },
     date: {
       type: String,
-      require: true,
+      require: true
     },
-    idUser: {
+    userId: {
       type: String,
-      require: true,
+      require: true
     },
-    nameUser: {
+    userAlias: {
       type: String,
-      require: true,
+      require: true
     },
-    pictureUser: {
+    userPicture: {
       type: String,
-      require: true,
+      require: true
     },
-    idBusiness: {
+    businessId: {
       type: String,
-      require: true,
-    },
+      require: true
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

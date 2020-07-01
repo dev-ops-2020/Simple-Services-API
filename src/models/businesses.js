@@ -4,81 +4,81 @@ const BusinessesSchema = Schema(
   {
     id: {
       type: String,
-      require: false,
-    },
-    name: {
-      type: String,
-      require: true,
-    },
-    description: {
-      type: String,
-      require: true,
-    },
-    slogan: {
-      type: String,
-      require: true,
-    },
-    owner: {
-      type: String,
-      require: true,
-    },
-    score: {
-      type: Number,
-      require: false,
-      default: 5 // TODO Change value when production deployment
+      require: false
     },
     status: {
       type: Boolean,
-      require: true,
-      default: true, // TODO Change to false when production deployment
+      require: false,
+      default: true
     },
-    logo: {
+    // Owner info
+    owner: {
       type: String,
-      require: false,
-    },
-    pictures: {
-      type: [],
-      require: false,
+      require: true
     },
     phone: {
       type: String,
-      require: false,
+      require: true
     },
-    fb: {
+    email: {
       type: String,
-      require: false,
+      require: true
     },
-    ig: {
+    pass: {
       type: String,
-      require: false,
+      require: true
     },
-    wa: {
+    // Business info
+    logo: {
       type: String,
-      require: false,
+      require: true
     },
-    schedule: {
-      type: [],
-      require: false,
+    name: {
+      type: String,
+      require: true
     },
-    categories: {
-      type: [],
-      require: true,
+    desc: {
+      type: String,
+      require: true
+    },
+    slogan: {
+      type: String,
+      require: true
+    },
+    address: {
+      type: String,
+      require: true
     },
     latitude: {
-      type: Number,
-      require: true,
+      type: Number
     },
     longitude: {
-      type: Number,
-      require: true,
+      type: Number
     },
-    idMembership: {
-      type: String,
-      require: true,
+    fb: {
+      type: String
+    },
+    ig: {
+      type: String
+    },
+    wa: {
+      type: String
+    },
+    schedule: {
+      type: []
+    },
+    categories: {
+      type: []
+    },
+    pictures: {
+      type: []
+    },
+    membershipId: {
+      type: String
     },
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

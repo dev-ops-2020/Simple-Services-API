@@ -4,53 +4,40 @@ const UsersSchema = Schema(
   {
     id: {
       type: String,
+      require: false
+    },
+    status: {
+      type: Boolean,
       require: false,
+      default: true
     },
     name: {
       type: String,
-      require: true,
+      require: true
     },
     alias: {
       type: String,
       unique: true,
-      require: true,
+      require: true
     },
     phone: {
       type: String,
       unique: true,
-      require: true,
+      require: true
     },
     email: {
       type: String,
       unique: true,
-      require: true,
+      require: true
     },
     password: {
       type: String,
-      require: true,
+      require: true
     },
     picture: {
       type: String,
-      require: true,
-    },
-    qrCode: {
-      type: String,
       require: false,
-    },
-    points: {
-      type: String,
-      require: false,
-    },
-    status: {
-      type: Boolean,
-      require: true,
-      default: true,
-    },
-    rol: {
-      type: String,
-      enum: ['Admin', 'Business', 'Client'],
-      require: true,
-      default: 'Client',
+      default: 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fusers%2Fdefault_user.png?alt=media'
     },
     idDevice: {
       type: String,
@@ -62,17 +49,21 @@ const UsersSchema = Schema(
       require: true,
       Default: '0000'
     },
+    qrCode: {
+      type: String,
+      require: false
+    },
+    points: {
+      type: String,
+      require: false
+    },
     businessFav: {
       type: [],
-      require: false,
-    },
-    coupons: {
-      type: [],
-      require: false,
-    },
+      require: false
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

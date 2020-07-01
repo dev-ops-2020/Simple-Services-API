@@ -4,29 +4,29 @@ const CategoriesSchema = Schema(
   {
     id: {
       type: String,
+      require: false
+    },
+    status: {
+      type: Boolean,
       require: false,
+      default: true
     },
     name: {
       type: String,
       unique: true,
-      require: true,
+      require: true
     },
     description: {
       type: String,
-      require: true,
+      require: true
     },
     icon: {
       type: String,
-      require: false,
-    },
-    status: {
-      type: Boolean,
-      require: true,
-      default: true, // TODO Change to false when production deployment
-    },
+      require: false
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

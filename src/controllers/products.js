@@ -4,11 +4,9 @@ function CreateProduct(req, res) {
   let Product = new ProductsSchema();
   Product.name = req.body.name;
   Product.description = req.body.description;
-  Product.available = req.body.available;
-  Product.prices = req.body.prices;
-  Product.pictures = req.body.pictures;
+  Product.price = req.body.price;
   Product.categories = req.body.categories;
-  Product.idBusiness = req.body.idBusiness;
+  Product.businessId = req.body.businessId;
   Product.save((err, Product) => {
     if (err) {
       return res.status(202).send({message: 'Error storing Product'});
@@ -81,7 +79,7 @@ function ListProductsByCategory(req, res) {
 
 function ListProductsByBusiness(req, res) {
     let id = req.params.id;
-    ProductsSchema.find({idBusiness: id}, (err, Products) => {
+    ProductsSchema.find({businessId: id}, (err, Products) => {
       if (Products.length == 0) {
         return res.status(202).send({message: 'No products to show'});
       } else {

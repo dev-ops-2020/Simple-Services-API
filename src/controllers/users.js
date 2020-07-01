@@ -9,27 +9,26 @@ function SignUp(req, res) {
   User.phone = req.body.phone;
   User.email = req.body.email;
   User.password = req.body.password;
-  User.rol = req.body.rol; // TODO Check this field...
-  User.idDevice = req.body.idDevice;
 
   bcrypt.hash(User.password, bcrypt.genSaltSync(7), (err, hash) => {
     User.password = hash;
-    User.picture = 'https://api.adorable.io/avatars/'+User.alias;
-    User.token = service.createToken(User);
+    User.idDevice = req.body.idDevice;
+    User.token = service.createToken(User);    
+    //User.picture = 'https://api.adorable.io/avatars/'+User.alias;
     User.save((err) => {
       if (err) {
         return res.status(202).send({message: 'Error creating account'});
       } else {
         return res.status(200).send({message: 'Ok', user: User});
       }
-    })
+    });
   });  
 }
 
 function SignIn(req, res) {
   let alias = req.body.alias;
   let password = req.body.password;
-  UsersSchema.findOne({alias: alias}, (err, User) => {
+  UsersSchema.findOne({alias}, (err, User) => {
     if (!User || !User.status) {
       return res.status(202).send({message: 'User not found'});
     } else {

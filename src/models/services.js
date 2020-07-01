@@ -4,45 +4,45 @@ const ServicesSchema = Schema(
   {
     id: {
       type: String,
+      require: false
+    },
+    status: {
+      type: Boolean,
       require: false,
+      default: true
     },
     name: {
       type: String,
-      require: true,
+      require: true
     },
     description: {
       type: String,
-      require: true,
+      require: true
+    },
+    price: {
+      type: Number,
+      require: true
+    },
+    pictures: {
+      type: [],
+      require: false
+    },
+    categories: {
+      type: [],
+      require: true
     },
     available: {
       type: Boolean,
       require: true,
-      default: true,
-    },   
-    prices: {
-        type: [],
-        require: false,
+      default: true
     },
-    pictures: {
-      type: [],
-      require: false,
-    },
-    status: {
-      type: Boolean,
-      require: true,
-      default: true, // TODO Change to false when production deployment
-    },
-    categories: {
-        type: [],
-        require: true,
-    },
-    idBusiness: {
+    businessId: {
       type: String,
-      require: true,
-    },    
+      require: true
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

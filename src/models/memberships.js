@@ -4,57 +4,57 @@ const MembershipsSchema = Schema(
   {
     id: {
       type: String,
+      require: false
+    },
+    status: {
+      type: Boolean,
       require: false,
+      default: true
     },
     name: {
       type: String,
       unique: true,
-      require: true,
+      require: true
     },
     description: {
       type: String,
-      require: true,
+      require: true
     },
     color: {
       type: String,
-      require: true,
+      require: true
     },
     priority: {
       type: Number,
-      require: true,
+      require: true
     },
     extras: {
       type: String,
-      require: true,
-    },
-    status: {
-      type: Boolean,
-      require: true,
-      default: true, // TODO Change to false when production deployment
+      require: true
     },
     price: {
       type: Number,
-      require: true,
+      require: true
     },
     priceOff: {
       type: Number,
-      require: true,
+      require: true
     },
     priceExtraCoupon: {
       type: Number,
-      require: true,
+      require: true
     },
     quantityCoupons: {
       type: Number,
-      require: true,
+      require: true
     },
     quantityPromotion: {
       type: Number,
-      require: true,
-    },
+      require: true
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
