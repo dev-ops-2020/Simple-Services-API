@@ -40,7 +40,7 @@ function LogIn(req, res) {
   let pass = req.body.pass;
   BusinessesSchema.findOne({email}, (err, Business) => {
     if (!Business || !Business.status) {
-      return res.status(202).send({message: 'Business not found'});
+      return res.status(202).send({message: 'Object not found'});
     } else {
       bcrypt.compare(pass, Business.pass, function(err, match) {
         if (!match) {

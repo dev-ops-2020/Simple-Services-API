@@ -30,7 +30,7 @@ function SignIn(req, res) {
   let pass = req.body.pass;
   UsersSchema.findOne({email}, (err, User) => {
     if (!User || !User.status) {
-      return res.status(202).send({message: 'User not found'});
+      return res.status(202).send({message: 'Object not found'});
     } else {
       bcrypt.compare(pass, User.pass, function(err, match) {
         if (!match) {
