@@ -8,7 +8,6 @@ const MembershipsSchema = Schema(
     },
     status: {
       type: Boolean,
-      require: false,
       default: true
     },
     name: {

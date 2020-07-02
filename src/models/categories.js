@@ -8,7 +8,6 @@ const CategoriesSchema = Schema(
     },
     status: {
       type: Boolean,
-      require: false,
       default: true
     },
     name: {
@@ -22,7 +21,7 @@ const CategoriesSchema = Schema(
     },
     icon: {
       type: String,
-      require: false
+      require: true
     }
   },
   {

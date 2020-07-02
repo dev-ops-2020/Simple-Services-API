@@ -8,7 +8,6 @@ const UsersSchema = Schema(
     },
     status: {
       type: Boolean,
-      require: false,
       default: true
     },
     name: {
@@ -36,7 +35,6 @@ const UsersSchema = Schema(
     },
     picture: {
       type: String,
-      require: false,
       default: 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fusers%2Fdefault_user.png?alt=media'
     },
     idDevice: {
@@ -50,17 +48,14 @@ const UsersSchema = Schema(
       Default: '0000'
     },
     qrCode: {
-      type: String,
-      require: false
+      type: String
     },
     points: {
-      type: String,
-      require: false
+      type: String
     },
     businessFav: {
-      type: [],
-      require: false
-    }
+      type: []
+    },
   },
   {
     timestamps: true

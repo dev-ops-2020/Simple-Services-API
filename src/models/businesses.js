@@ -8,7 +8,6 @@ const BusinessesSchema = Schema(
     },
     status: {
       type: Boolean,
-      require: false,
       default: true
     },
     // Owner info

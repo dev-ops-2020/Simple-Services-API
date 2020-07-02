@@ -15,8 +15,7 @@ const CartSchema = Schema(
       require: true
     },
     products: {      
-      type: [],
-      require: false
+      type: []
     }
   },
   {

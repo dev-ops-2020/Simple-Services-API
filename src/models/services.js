@@ -8,7 +8,6 @@ const ServicesSchema = Schema(
     },
     status: {
       type: Boolean,
-      require: false,
       default: true
     },
     name: {
@@ -24,16 +23,13 @@ const ServicesSchema = Schema(
       require: true
     },
     pictures: {
-      type: [],
-      require: false
+      type: []
     },
     categories: {
-      type: [],
-      require: true
+      type: []
     },
     available: {
       type: Boolean,
-      require: true,
       default: true
     },
     businessId: {
