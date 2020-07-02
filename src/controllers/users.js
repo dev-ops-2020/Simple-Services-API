@@ -8,10 +8,10 @@ function SignUp(req, res) {
   User.alias = req.body.alias;
   User.phone = req.body.phone;
   User.email = req.body.email;
-  User.password = req.body.password;
+  User.pass = req.body.pass;
 
-  bcrypt.hash(User.password, bcrypt.genSaltSync(7), (err, hash) => {
-    User.password = hash;
+  bcrypt.hash(User.pass, bcrypt.genSaltSync(7), (err, hash) => {
+    User.pass = hash;
     User.idDevice = req.body.idDevice;
     User.token = service.createToken(User);    
     //User.picture = 'https://api.adorable.io/avatars/'+User.alias;
