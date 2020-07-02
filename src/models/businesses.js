@@ -17,10 +17,12 @@ const BusinessesSchema = Schema(
     },
     phone: {
       type: String,
+      unique: true,
       require: true
     },
     email: {
       type: String,
+      unique: true,
       require: true
     },
     pass: {

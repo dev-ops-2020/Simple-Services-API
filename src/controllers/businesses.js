@@ -46,7 +46,7 @@ function LogIn(req, res) {
         if (!match) {
           return res.status(202).send({message: 'Passwords do not match'});
         } else {
-          return res.status(200).send({message: 'Ok', business: Business});
+          return res.status(200).send({message: 'Ok', object: Business});
         }     
       });
     }

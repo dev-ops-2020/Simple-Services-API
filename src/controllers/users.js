@@ -26,17 +26,17 @@ function SignUp(req, res) {
 }
 
 function SignIn(req, res) {
-  let alias = req.body.alias;
-  let password = req.body.password;
-  UsersSchema.findOne({alias}, (err, User) => {
+  let email = req.body.email;
+  let pass = req.body.pass;
+  UsersSchema.findOne({email}, (err, User) => {
     if (!User || !User.status) {
       return res.status(202).send({message: 'User not found'});
     } else {
-      bcrypt.compare(password, User.password, function(err, match) {
+      bcrypt.compare(pass, User.pass, function(err, match) {
         if (!match) {
           return res.status(202).send({message: 'Passwords do not match'});
         } else {
-          return res.status(200).send({message: 'Ok', user: User});
+          return res.status(200).send({message: 'Ok', object: User});
         }     
       });
     }

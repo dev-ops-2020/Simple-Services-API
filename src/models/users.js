@@ -29,7 +29,7 @@ const UsersSchema = Schema(
       unique: true,
       require: true
     },
-    password: {
+    pass: {
       type: String,
       require: true
     },
