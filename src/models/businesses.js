@@ -50,10 +50,10 @@ const BusinessesSchema = Schema(
       type: String,
       require: true
     },
-    latitude: {
+    lat: {
       type: Number
     },
-    longitude: {
+    lng: {
       type: Number
     },
     fb: {

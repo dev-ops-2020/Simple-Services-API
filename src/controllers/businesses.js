@@ -20,8 +20,8 @@ function CreateBusiness(req, res) {
     Business.desc = req.body.desc;
     Business.slogan = req.body.slogan;
     Business.address = req.body.address;
-    Business.latitude = req.body.latitude;
-    Business.longitude = req.body.longitude;
+    Business.lat = req.body.lat;
+    Business.lng = req.body.ln;
     Business.fb = req.body.fb;
     Business.ig = req.body.ig;
     Business.wa = req.body.wa;
