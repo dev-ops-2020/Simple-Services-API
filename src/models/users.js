@@ -34,10 +34,9 @@ const UsersSchema = Schema(
       require: true
     },
     picture: {
-      type: String,
-      default: 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fusers%2Fdefault_user.png?alt=media'
+      type: String
     },
-    idDevice: {
+    deviceId: {
       type: String,
       require: true,
       Default: '0000'

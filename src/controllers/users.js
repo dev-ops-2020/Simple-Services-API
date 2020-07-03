@@ -12,9 +12,9 @@ function SignUp(req, res) {
 
   bcrypt.hash(User.pass, bcrypt.genSaltSync(7), (err, hash) => {
     User.pass = hash;
-    User.idDevice = req.body.idDevice;
+    User.deviceId = req.body.deviceId;
     User.token = service.createToken(User);    
-    //User.picture = 'https://api.adorable.io/avatars/'+User.alias;
+    User.picture = 'https://api.adorable.io/avatars/'+User.alias;
     User.save((err) => {
       if (err) {
         return res.status(202).send({message: 'Error creating account'});

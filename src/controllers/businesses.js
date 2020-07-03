@@ -1,5 +1,6 @@
 const BusinessesSchema = require('../models/businesses');
 const bcrypt = require('bcrypt');
+const service = require('../services/index');
 
 function CreateBusiness(req, res) {
   let Business = new BusinessesSchema();
@@ -11,6 +12,8 @@ function CreateBusiness(req, res) {
 
   bcrypt.hash(Business.pass, bcrypt.genSaltSync(7), (err, hash) => {
     Business.pass = hash;
+    Business.deviceId = req.body.deviceId;
+    Business.token = service.createToken(User);    
     // Business info
     Business.logo = req.body.logo;
     Business.name = req.body.name;
@@ -22,6 +25,7 @@ function CreateBusiness(req, res) {
     Business.fb = req.body.fb;
     Business.ig = req.body.ig;
     Business.wa = req.body.wa;
+    Business.delivery = req.body.delivery;
     Business.schedule = req.body.schedule;
     Business.categories = req.body.categories;
     Business.pictures = req.body.pictures;

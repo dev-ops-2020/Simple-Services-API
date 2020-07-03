@@ -65,6 +65,9 @@ const BusinessesSchema = Schema(
     wa: {
       type: String
     },
+    delivery: {
+      type: Boolean
+    },
     schedule: {
       type: []
     },
@@ -73,6 +76,16 @@ const BusinessesSchema = Schema(
     },
     pictures: {
       type: []
+    },
+    deviceId: {
+      type: String,
+      require: true,
+      Default: '0000'
+    },
+    token: {
+      type: String,
+      require: true,
+      Default: '0000'
     },
     membershipId: {
       type: String
