@@ -12,8 +12,8 @@ function CreateBusiness(req, res) {
 
   bcrypt.hash(Business.pass, bcrypt.genSaltSync(7), (err, hash) => {
     Business.pass = hash;
+    Business.token = service.createToken(User);
     Business.deviceId = req.body.deviceId;
-    Business.token = service.createToken(User);    
     // Business info
     Business.logo = req.body.logo;
     Business.name = req.body.name;
@@ -29,11 +29,14 @@ function CreateBusiness(req, res) {
     Business.schedule = req.body.schedule;
     Business.categories = req.body.categories;
     Business.pictures = req.body.pictures;
+    if (Business.logo == 'No Logo') {
+      Business.logo = 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fbusinesses%2F_no_logo.png?alt=media';
+    }
     Business.save((err, Business) => {
       if (err) {
-        return res.status(202).send({message: 'Error creating business'});
+        return res.status(202).send({message: 'Error'});
       } else {
-      return res.status(200).send({message: 'Business created', business: Business});
+      return res.status(200).send({message: 'Ok', business: Business});
       }
     });   
   });
