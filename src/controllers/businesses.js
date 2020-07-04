@@ -12,7 +12,7 @@ function CreateBusiness(req, res) {
 
   bcrypt.hash(Business.pass, bcrypt.genSaltSync(7), (err, hash) => {
     Business.pass = hash;
-    Business.token = service.createToken(User);
+    Business.token = service.createToken(Business);
     Business.deviceId = req.body.deviceId;
     // Business info
     Business.logo = req.body.logo;
