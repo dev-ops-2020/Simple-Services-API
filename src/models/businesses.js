@@ -8,16 +8,11 @@ const BusinessesSchema = Schema(
     },
     status: {
       type: Boolean,
-      default: true
+      default: true // Change to false on deploy to production
     },
     // Owner info
     owner: {
       type: String,
-      require: true
-    },
-    phone: {
-      type: String,
-      unique: true,
       require: true
     },
     email: {
@@ -43,6 +38,10 @@ const BusinessesSchema = Schema(
       require: true
     },
     slogan: {
+      type: String,
+      require: true
+    },
+    phone: {
       type: String,
       require: true
     },

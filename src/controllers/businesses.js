@@ -6,7 +6,6 @@ function CreateBusiness(req, res) {
   let Business = new BusinessesSchema();
   // Owner info
   Business.owner = req.body.owner;
-  Business.phone = req.body.phone;
   Business.email = req.body.email;
   Business.pass = req.body.pass;
 
@@ -19,6 +18,7 @@ function CreateBusiness(req, res) {
     Business.name = req.body.name;
     Business.desc = req.body.desc;
     Business.slogan = req.body.slogan;
+    Business.phone = req.body.phone;
     Business.address = req.body.address;
     Business.lat = req.body.lat;
     Business.lng = req.body.lng;
@@ -29,9 +29,10 @@ function CreateBusiness(req, res) {
     Business.schedule = req.body.schedule;
     Business.categories = req.body.categories;
     Business.pictures = req.body.pictures;
-    if (Business.logo == 'No Logo') {
+    if (Business.logo == 'No Logo')
       Business.logo = 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fbusinesses%2F_no_logo.png?alt=media';
-    }
+    else
+      Business.logo = req.body.logo;
     Business.save((err, Business) => {
       if (err) {
         return res.status(202).send({message: 'Error'});
