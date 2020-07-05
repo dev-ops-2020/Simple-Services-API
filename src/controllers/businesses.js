@@ -14,6 +14,7 @@ function CreateBusiness(req, res) {
     Business.token = service.createToken(Business);
     Business.deviceId = req.body.deviceId;
     // Business info
+    Business.type = req.body.type;
     Business.logo = req.body.logo;
     Business.name = req.body.name;
     Business.desc = req.body.desc;
@@ -30,7 +31,7 @@ function CreateBusiness(req, res) {
     Business.categories = req.body.categories;
     Business.pictures = req.body.pictures;
     if (Business.logo == 'No Logo')
-      Business.logo = 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fbusinesses%2F_no_logo.png?alt=media';
+      Business.logo = 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fbusinesses%2F_____No_Logo.png?alt=media';
     else
       Business.logo = req.body.logo;
     Business.save((err, Business) => {

@@ -11,6 +11,9 @@ const BusinessesSchema = Schema(
       default: true // Change to false on deploy to production
     },
     // Owner info
+    type: {
+      type: String, // Products || Services
+    },
     owner: {
       type: String,
       require: true
