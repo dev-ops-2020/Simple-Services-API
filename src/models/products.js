@@ -6,15 +6,15 @@ const ProductsSchema = Schema(
       type: String,
       require: false
     },
-    status: {
-      type: Boolean,
-      default: true
+    type: {
+      type: String,
+      require: true
     },
     name: {
       type: String,
       require: true
     },
-    description: {
+    desc: {
       type: String,
       require: true
     },
@@ -22,15 +22,15 @@ const ProductsSchema = Schema(
       type: Number,
       require: true
     },
-    categories: {
-      type: [],
+    available: {
+      type: Boolean,
+      require: true
     },
     pictures: {
       type: [],
     },
-    available: {
-      type: Boolean,
-      default: true
+    tags: {
+      type: [],
     },
     businessId: {
       type: String,

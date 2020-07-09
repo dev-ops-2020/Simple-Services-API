@@ -9,7 +9,6 @@ const BusinessesController = require('../controllers/businesses');
 const CommentsController = require('../controllers/comments');
 const UsersController = require('../controllers/users');
 const ProductsController = require('../controllers/products');
-const ServicesController = require('../controllers/services');
 const CartController = require('../controllers/cart');
 
 // First route
@@ -63,16 +62,9 @@ router.put('/products/:id', ProductsController.UpdateProduct);
 router.post('/products/:id', ProductsController.DeleteProduct);
 router.get('/products', ProductsController.ListProducts);
 router.get('/products/business/:id', ProductsController.ListProductsByBusiness);
-router.get('/products/category/:id', ProductsController.ListProductsByCategory);
-
-//Services
-router.post('/services', ServicesController.CreateService);
-router.get('/services/:id', ServicesController.ReadService);
-router.put('/services/:id', ServicesController.UpdateService);
-router.post('/services/:id', ServicesController.DeleteService);
-router.get('/services', ServicesController.ListServices);
-router.get('/services/business/:id', ServicesController.ListServicesByBusiness);
-router.get('/services/category/:id', ServicesController.ListServicesByCategory);
+router.get('/products/tag/:tag', ProductsController.ListProductsByTags);
+router.get('/products/available/', ProductsController.ListProductsAvailable);
+router.get('/products/unavailable/', ProductsController.ListProductsUnavailable);
 
 //Cart
 router.post('/cart/', CartController.CreateCart);
