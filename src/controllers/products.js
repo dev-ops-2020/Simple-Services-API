@@ -75,7 +75,7 @@ function ListProductsByBusiness(req, res) {
     if (Products.length == 0) {
       return res.status(202).send({message: 'No products to show'});
     } else {
-      ProductsSchema.find({available}, (err, Products) => {
+      ProductsSchema.find({available: true}, (err, Products) => {
         if (Products.length == 0) {
           return res.status(202).send({message: 'No products to show'});
         } else {
