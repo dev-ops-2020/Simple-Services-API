@@ -105,11 +105,11 @@ function ListProductsAvailable(req, res) {
   let id = req.params.id;
   ProductsSchema.find({businessId: id}, (err, Products) => {
     if (Products.length == 0) {
-      return res.status(202).send({message: 'Product not found'});
+      return res.status(202).send({message: 'Error'});
     } else {
       ProductsSchema.find({available: true}, (err, Products) => {
         if (Products.length == 0) {
-          return res.status(202).send({message: 'Product not found'});
+          return res.status(202).send({message: 'No products'});
         } else {
           return res.status(200).send({message: 'Ok', products: Products});          
         }
@@ -122,11 +122,11 @@ function ListProductsUnavailable(req, res) {
   let id = req.params.id;
   ProductsSchema.find({businessId: id}, (err, Products) => {
     if (Products.length == 0) {
-      return res.status(202).send({message: 'Product not found'});
+      return res.status(202).send({message: 'Error'});
     } else {
       ProductsSchema.find({available: false}, (err, Products) => {
         if (Products.length == 0) {
-          return res.status(202).send({message: 'Product not found'});
+          return res.status(202).send({message: 'No products'});
         } else {
           return res.status(200).send({message: 'Ok', products: Products});          
         }
