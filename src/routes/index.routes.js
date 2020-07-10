@@ -53,7 +53,7 @@ router.post('/signin', UsersController.SignIn);
 router.get('/users/:id', UsersController.ReadUser);
 router.put('/users/:id', UsersController.UpdateUser);
 router.post('/users/:id', UsersController.DeleteUser);
-router.get('/users', UsersController.ListUsers);
+//router.get('/users', UsersController.ListUsers);
 
 //Products
 router.post('/products', ProductsController.CreateProduct);
