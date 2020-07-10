@@ -38,8 +38,6 @@ function UpdateProduct(req, res) {
   ProductsSchema.findByIdAndUpdate(id, Product, (err, Product) => {
     if (err) {
       return res.status(202).send({message: 'Update failed'});
-    } else if (!Product.status) {
-      return res.status(202).send({message: 'Product deleted...'});
     } else {      
       return res.status(200).send({message: 'Product updated'});
     }
@@ -102,25 +100,51 @@ function ListProductsByTags(req, res) {
     }
   });
 }
-// TODO revise
+
 function ListProductsAvailable(req, res) {
-  let flag = req.params.flag;
-  ProductsSchema.find({tags: {tag}}, (err, Products) => {
+  let id = req.params.id;
+  ProductsSchema.find({businessId: id}, (err, Products) => {
     if (Products.length == 0) {
-      return res.status(202).send({message: 'No products to show'});
+      return res.status(202).send({message: 'Product not found'});
     } else {
-      return res.status(200).send({message: 'Ok', products: Products});
+      ProductsSchema.find({available: true}, (err, Products) => {
+        if (Products.length == 0) {
+          return res.status(202).send({message: 'Product not found'});
+        } else {
+          return res.status(200).send({message: 'Ok', products: Products});          
+        }
+      });
     }
   });
 }
-// TODO revise
+
 function ListProductsUnavailable(req, res) {
-  let flag = req.params.flag;
-  ProductsSchema.find({tags: {tag}}, (err, Products) => {
+  let id = req.params.id;
+  ProductsSchema.find({businessId: id}, (err, Products) => {
     if (Products.length == 0) {
-      return res.status(202).send({message: 'No products to show'});
+      return res.status(202).send({message: 'Product not found'});
     } else {
-      return res.status(200).send({message: 'Ok', products: Products});
+      ProductsSchema.find({available: false}, (err, Products) => {
+        if (Products.length == 0) {
+          return res.status(202).send({message: 'Product not found'});
+        } else {
+          return res.status(200).send({message: 'Ok', products: Products});          
+        }
+      });
+    }
+  });
+}
+
+function ChangeStatus(req, res) {  
+  let id = req.params.id;
+  ProductsSchema.findOne(id, (err, Product) => {
+    if (!Product) {
+      return res.status(202).send({message: 'Error'});
+    } else {
+      let available = req.body.available;
+      ProductsSchema.updateOne(id, {$set: {available: available}}, (err, Product) => {
+        return res.status(200).send({message: 'Ok', product: Product});
+      });      
     }
   });
 }
@@ -134,5 +158,6 @@ module.exports = {
   ListProductsByBusiness,
   ListProductsByTags,
   ListProductsAvailable,
-  ListProductsUnavailable
+  ListProductsUnavailable,
+  ChangeStatus
 };

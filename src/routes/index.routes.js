@@ -63,8 +63,9 @@ router.post('/products/:id', ProductsController.DeleteProduct);
 router.get('/products', ProductsController.ListProducts);
 router.get('/products/business/:id', ProductsController.ListProductsByBusiness);
 router.get('/products/tag/:tag', ProductsController.ListProductsByTags);
-router.get('/products/available/', ProductsController.ListProductsAvailable);
-router.get('/products/unavailable/', ProductsController.ListProductsUnavailable);
+router.get('/products/available/:id', ProductsController.ListProductsAvailable);
+router.get('/products/unavailable/:id', ProductsController.ListProductsUnavailable);
+router.put('/products/change_status/', ProductsController.ChangeStatus);
 
 //Cart
 router.post('/cart/', CartController.CreateCart);
