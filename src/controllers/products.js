@@ -103,7 +103,7 @@ function ListProductsByTags(req, res) {
 
 function ListProductsAvailable(req, res) {
   let id = req.params.id;
-  ProductsSchema.find({businessId: id}, (err, Products) => {
+  ProductsSchema.findOne({businessId: id}, (err, Products) => {
     if (Products.length == 0) {
       return res.status(202).send({message: 'Error'});
     } else {
@@ -120,7 +120,7 @@ function ListProductsAvailable(req, res) {
 
 function ListProductsUnavailable(req, res) {
   let id = req.params.id;
-  ProductsSchema.find({businessId: id}, (err, Products) => {
+  ProductsSchema.findOne({businessId: id}, (err, Products) => {
     if (Products.length == 0) {
       return res.status(202).send({message: 'Error'});
     } else {
