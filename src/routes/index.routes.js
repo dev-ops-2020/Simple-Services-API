@@ -65,7 +65,7 @@ router.get('/products/business/:id', ProductsController.ListProductsByBusiness);
 router.get('/products/tag/:tag', ProductsController.ListProductsByTags);
 router.get('/products/available/:id', ProductsController.ListProductsAvailable);
 router.get('/products/unavailable/:id', ProductsController.ListProductsUnavailable);
-router.post('/products/change_state/', ProductsController.ChangeState);
+router.post('/products/change_state/:id', ProductsController.ChangeState);
 
 //Cart
 router.post('/cart/', CartController.CreateCart);
