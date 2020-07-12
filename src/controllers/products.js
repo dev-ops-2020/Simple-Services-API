@@ -111,7 +111,7 @@ function ListProductsUnavailable(req, res) {
   });
 }
 
-function ChangeStatus(req, res) {  
+function ChangeState(req, res) {  
   let id = req.params.id;
   ProductsSchema.findOne(id, (err, Product) => {
     if (!Product) {
@@ -135,5 +135,5 @@ module.exports = {
   ListProductsByTags,
   ListProductsAvailable,
   ListProductsUnavailable,
-  ChangeStatus
+  ChangeState
 };
