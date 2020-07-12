@@ -69,68 +69,44 @@ function ListProducts(req, res) {
 
 function ListProductsByBusiness(req, res) {
   let id = req.params.id;
-  ProductsSchema.find({businessId: id}, (err, Products) => {
+  ProductsSchema.find({businessId: id, available: true}, (err, Products) => {
     if (Products.length == 0) {
       return res.status(202).send({message: 'No products to show'});
     } else {
-      ProductsSchema.find({available: true}, (err, Products) => {
-        if (Products.length == 0) {
-          return res.status(202).send({message: 'No products to show'});
-        } else {
-          return res.status(200).send({message: 'Ok', products: Products});
-        }
-      });
+      return res.status(200).send({message: 'Ok', products: Products});
     }
   });
 }
 
 function ListProductsByTags(req, res) {
-  ProductsSchema.find({available: true}, (err, Products) => {
+  let tag = req.params.tag;
+  ProductsSchema.find({available: true, tags: tag}, (err, Products) => {
     if (Products.length == 0) {
       return res.status(202).send({message: 'No products to show'});
     } else {
-      let tag = req.params.tag;
-      ProductsSchema.find({tags: {tag}}, (err, Products) => {
-        if (Products.length == 0) {
-          return res.status(202).send({message: 'No products to show'});
-        } else {
-          return res.status(200).send({message: 'Ok', products: Products});
-        }
-      });
+      return res.status(200).send({message: 'Ok', products: Products});
     }
   });
 }
 
 function ListProductsAvailable(req, res) {
   let id = req.params.id;
-  ProductsSchema.find({businessId: id}, (err, Products) => {
+  ProductsSchema.find({businessId: id, available: true}, (err, Products) => {
     if (Products.length == 0) {
       return res.status(202).send({message: 'Error'});
     } else {
-      ProductsSchema.find({available: true}, (err, Products) => {
-        if (Products.length == 0) {
-          return res.status(202).send({message: 'No products'});
-        } else {
-          return res.status(200).send({message: 'Ok', products: Products});          
-        }
-      });
+      return res.status(200).send({message: 'Ok', products: Products})
     }
   });
 }
 
 function ListProductsUnavailable(req, res) {
   let id = req.params.id;
-  ProductsSchema.find({businessId: id}, (err, Products) => {
+  ProductsSchema.find({businessId: id, available: false}, (err, Products) => {
     if (Products.length == 0) {
       return res.status(202).send({message: 'Error'});
     } else {
-      ProductsSchema.find({available: false}, (err, Products) => {
-        if (Products.length == 0) {
-          return res.status(202).send({message: 'No products'});
-        } else {
-          return res.status(200).send({message: 'Ok', products: Products});          
-        }
-      });
+      return res.status(200).send({message: 'Ok', products: Products})
     }
   });
 }
