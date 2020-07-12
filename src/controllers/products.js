@@ -113,16 +113,13 @@ function ListProductsUnavailable(req, res) {
 
 function ChangeState(req, res) {  
   let id = req.params.id;
-  ProductsSchema.findOne(id, (err, Product) => {
-    if (!Product) {
-      return res.status(202).send({message: 'Error'});
+  ProductsSchema.findByIdAndUpdate(id, {$set: {available: req.body.available}}, (err, Product) => {
+    if (!err) {
+      return res.status(200).send({message: 'Ok'});
     } else {
-      let available = req.body.available;
-      ProductsSchema.updateOne(id, {$set: {available: available}}, (err, Product) => {
-        return res.status(200).send({message: 'Ok', product: Product});
-      });      
+      return res.status(202).send({message: 'Error'});
     }
-  });
+  });   
 }
 
 module.exports = {
