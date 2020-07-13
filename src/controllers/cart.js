@@ -32,7 +32,7 @@ function ReadCart(req, res) {
             } else {
               return res.status(200).send({message: 'Ok', products: Cart.products});
             }
-          });
+          }).sort({productId: -1});
         }
       });
     }
