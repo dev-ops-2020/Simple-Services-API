@@ -36,7 +36,7 @@ router.get('/businesses/:id', BusinessesController.ReadBusiness);
 router.put('/businesses/:id', BusinessesController.UpdateBusiness);
 router.post('/businesses/:id', BusinessesController.DeleteBusiness);
 //router.get('/businesses', BusinessesController.ListBusinesses);
-router.get('/businesses/category/:id/:filter', BusinessesController.ListBusinessesByCategory);
+router.get('/businesses/category/:id/:filter/:lat/:lng', BusinessesController.ListBusinessesByCategory);
 //router.get('businesses/user/:id', BusinessesController.ListBusinessesByUserFav);
 
 // Users
