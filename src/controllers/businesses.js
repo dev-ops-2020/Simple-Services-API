@@ -114,18 +114,18 @@ function ListBusinesses(req, res) {
 
 function ListBusinessesByCategory(req, res) {
   let id = req.params.id;
+  let filter = req.params.filter;
+  let mFilter = "";
+  if (filter == "def")
+    mFilter = name;
+  else if (filter == "score")
+    mFilter = score;
+  else if (filter == "near")
+    mFilter = lat;
   BusinessesSchema.find({categories: {category: id}}, (err, Businesses) => {
     if (Businesses.length == 0) {
       return res.status(202).send({message: 'No businesses to show'});
     } else {
-      let filter = req.params.filter;
-      let mFilter = "";
-      if (filter == "def")
-        mFilter = name;
-      else if (filter == "score")
-        mFilter = score;
-      else if (filter == "near")
-        mFilter = lat;
       return res.status(200).send({message: 'Ok', businesses: Businesses});
     }
   }).sort({mFilter: -1});
