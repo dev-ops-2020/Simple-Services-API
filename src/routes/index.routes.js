@@ -35,9 +35,17 @@ router.post('/businesses', BusinessesController.CreateBusiness);
 router.get('/businesses/:id', BusinessesController.ReadBusiness);
 router.put('/businesses/:id', BusinessesController.UpdateBusiness);
 router.post('/businesses/:id', BusinessesController.DeleteBusiness);
-router.get('/businesses', BusinessesController.ListBusinesses);
-router.get('/businesses/category/:id', BusinessesController.ListBusinessesByCategory);
+//router.get('/businesses', BusinessesController.ListBusinesses);
+router.get('/businesses/category/:id/:filter', BusinessesController.ListBusinessesByCategory);
 //router.get('businesses/user/:id', BusinessesController.ListBusinessesByUserFav);
+
+// Users
+router.post('/signin', UsersController.SignIn);
+router.post('/signup', UsersController.SignUp);
+router.get('/users/:id', UsersController.ReadUser);
+router.put('/users/:id', UsersController.UpdateUser);
+router.post('/users/:id', UsersController.DeleteUser);
+//router.get('/users', UsersController.ListUsers);
 
 // Comments
 router.post('/comments', CommentsController.CreateComment);
@@ -46,14 +54,6 @@ router.put('/comments/:id', CommentsController.UpdateComment);
 router.post('/comments/:id', CommentsController.DeleteComment);
 router.get('/comments', CommentsController.ListComments)
 router.get('/comments/business/:id', CommentsController.ListCommentsByBusiness)
-
-// Users
-router.post('/signup', UsersController.SignUp);
-router.post('/signin', UsersController.SignIn);
-router.get('/users/:id', UsersController.ReadUser);
-router.put('/users/:id', UsersController.UpdateUser);
-router.post('/users/:id', UsersController.DeleteUser);
-//router.get('/users', UsersController.ListUsers);
 
 //Products
 router.post('/products', ProductsController.CreateProduct);
