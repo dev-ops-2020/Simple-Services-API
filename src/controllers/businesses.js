@@ -142,7 +142,7 @@ function ListBusinessesByCategory(req, res) {
           maxDistance: maxD,
           includeLocs: 'dist.location',
           distanceField: 'dist.calculated',
-          distanceMultiplier : 0.001
+          distanceMultiplier : 0.01
           }
         },
         {$sort : mFilter},
