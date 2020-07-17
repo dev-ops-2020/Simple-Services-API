@@ -62,7 +62,7 @@ function ListCategories(req, res) {
     } else {
       return res.status(200).send({message: 'Ok', categories: Categories});
     }
-  });
+  }).sort({name: 1});
 }
 
 module.exports = {

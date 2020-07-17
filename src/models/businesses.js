@@ -27,7 +27,21 @@ const BusinessesSchema = Schema(
       type: String,
       require: true
     },
+    token: {
+      type: String,
+      require: true,
+      Default: '0000'
+    },
+    deviceId: {
+      type: String,
+      require: true,
+      Default: '0000'
+    },
     // Business info
+    type: {
+      type: String,
+      require: true
+    },
     logo: {
       type: String,
       require: true
@@ -58,6 +72,16 @@ const BusinessesSchema = Schema(
     lng: {
       type: Number
     },
+    loc: {
+      type: {
+        type: String,
+        default: 'Point'
+      },
+      coordinates: {
+        type: [Number],
+        index: '2dsphere'
+      }
+    },
     fb: {
       type: String
     },
@@ -79,17 +103,13 @@ const BusinessesSchema = Schema(
     pictures: {
       type: []
     },
-    deviceId: {
-      type: String,
-      require: true,
-      Default: '0000'
-    },
-    token: {
-      type: String,
-      require: true,
-      Default: '0000'
-    },
     membershipId: {
+      type: String
+    },
+    membershipValue: {
+      type: String
+    },
+    score: {
       type: String
     },
   },

@@ -1,5 +1,5 @@
 const CartSchema = require('../models/cart');
-const BusinessesSchema = require('../models/businesses');
+//const BusinessesSchema = require('../models/businesses');
 
 function CreateCart(req, res) {
   let Cart = new CartSchema();
@@ -55,7 +55,7 @@ function UpdateCart(req, res) {
           let qty = req.body.qty;
           CartSchema.findOne({'products.productId': productId}, (err, Cart) => {
             if (Cart) {
-              CartSchema.updateOne({'products.productId': productId}, {$set: {'products.$.qty': qty}}, (err, Cart1) => {
+              CartSchema.updateOne({'products.productId': productId}, {$set: {'products.$.qty': qty}}, (err, Cart) => {
                 return res.status(200).send({message: 'Product updated'});
               });
             } else {
