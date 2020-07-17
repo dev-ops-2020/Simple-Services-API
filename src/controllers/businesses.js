@@ -108,7 +108,7 @@ function DeleteBusiness(req, res) {
 
 function ListBusinesses(req, res) {
   let id = req.params.id;
-  BusinessesSchema.find({status: true}, 'name -_id', (err, Businesses) => {
+  BusinessesSchema.find({status: true, categories: {category: id}}, 'name -_id', (err, Businesses) => {
     if (Businesses.length == 0) {
       return res.status(202).send({message: 'No businesses to show'});
     } else {
@@ -136,12 +136,13 @@ function ListBusinessesByCategory(req, res) {
     mFilter = { score: 1 };
     BusinessesSchema.aggregate(
       [{'$geoNear': {
+          key: 'loc',
           near: point,
           spherical: true,
           maxDistance: maxD,
-          key: 'loc',
           includeLocs: 'dist.location',
-          distanceField: 'dist.calculated'
+          distanceField: 'dist.calculated',
+          distanceMultiplier : 0.001
           }
         },
         {$sort : mFilter},
