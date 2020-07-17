@@ -107,7 +107,8 @@ function DeleteBusiness(req, res) {
 }
 
 function ListBusinesses(req, res) {
-  BusinessesSchema.find({status: true}, (err, Businesses) => {
+  let id = req.params.id;
+  BusinessesSchema.find({status: true}, 'name -_id', (err, Businesses) => {
     if (Businesses.length == 0) {
       return res.status(202).send({message: 'No businesses to show'});
     } else {
@@ -133,32 +134,32 @@ function ListBusinessesByCategory(req, res) {
     mFilter = { loc: 1, name: 1 };
   else if (filter === 'score')
     mFilter = { score: 1 };
-  BusinessesSchema.find({categories: {category: id}}, (err, Businesses) => {
-    if (Businesses.length == 0) {
-      return res.status(202).send({message: 'No businesses to show'});
-    } else {
-      BusinessesSchema.aggregate(
-        [{'$geoNear': {
-            near: point,
-            spherical: true,
-            maxDistance: maxD,
-            key: 'loc',
-            includeLocs: 'dist.location',
-            distanceField: 'dist.calculated'
-            }
-          },
-          {$sort : mFilter}
-        ],
-        function(err, Businesses) {
-          if (err) {
-            return res.status(202).send({message: 'Something went wrong'});
-          } else {
-            return res.status(200).send({message: 'Ok', businesses: Businesses});
+    BusinessesSchema.aggregate(
+      [{'$geoNear': {
+          near: point,
+          spherical: true,
+          maxDistance: maxD,
+          key: 'loc',
+          includeLocs: 'dist.location',
+          distanceField: 'dist.calculated'
           }
+        },
+        {$sort : mFilter}
+      ],
+      function(err, Businesses) {
+        if (err) {
+          return res.status(202).send({message: 'Something went wrong'});
+        } else {
+          BusinessesSchema.find({status: true, categories: {category: id}}, (err, Businesses) => {
+            if (Businesses.length == 0) {
+              return res.status(202).send({message: 'No businesses to show'});
+            } else {      
+              return res.status(200).send({message: 'Ok', businesses: Businesses});
+            }
+          });
         }
-      )
-    }
-  });
+      }
+    );  
 }
 
 module.exports = {
