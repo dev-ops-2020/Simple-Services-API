@@ -144,19 +144,14 @@ function ListBusinessesByCategory(req, res) {
           distanceField: 'dist.calculated'
           }
         },
-        {$sort : mFilter}
+        {$sort : mFilter},
+        {$filter: {status: true, categories: {category: id}}}
       ],
       function(err, Businesses) {
         if (err) {
           return res.status(202).send({message: 'Something went wrong'});
         } else {
-          BusinessesSchema.find({status: true, categories: {category: id}}, (err, Businesses) => {
-            if (Businesses.length == 0) {
-              return res.status(202).send({message: 'No businesses to show'});
-            } else {      
-              return res.status(200).send({message: 'Ok', businesses: Businesses});
-            }
-          });
+          return res.status(200).send({message: 'Ok', businesses: Businesses});
         }
       }
     );  
