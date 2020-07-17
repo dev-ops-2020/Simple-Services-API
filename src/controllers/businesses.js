@@ -145,11 +145,11 @@ function ListBusinessesByCategory(req, res) {
           }
         },
         {$sort : mFilter},
-        {$filter: {status: true, categories: {category: id}}}
+        {$match: {status: true, categories: {category: id}}}
       ],
       function(err, Businesses) {
         if (err) {
-          return res.status(202).send({message: 'Something went wrong'});
+          return res.status(202).send({message: 'Something went wrong' + err});
         } else {
           return res.status(200).send({message: 'Ok', businesses: Businesses});
         }
