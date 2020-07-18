@@ -142,7 +142,7 @@ function ListBusinessesByCategory(req, res) {
           maxDistance: maxD,
           includeLocs: 'dist.location',
           distanceField: 'dist.calculated',
-          distanceMultiplier : 0.01
+          distanceMultiplier : 0.001
           }
         },
         {$sort : mFilter},
@@ -152,7 +152,11 @@ function ListBusinessesByCategory(req, res) {
         if (err) {
           return res.status(202).send({message: 'Something went wrong' + err});
         } else {
+          if (Businesses.length == 0) {
+          return res.status(202).send({message: 'No businesses to show'});
+        } else {
           return res.status(200).send({message: 'Ok', businesses: Businesses});
+        }
         }
       }
     );  
