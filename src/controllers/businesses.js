@@ -108,7 +108,7 @@ function DeleteBusiness(req, res) {
 
 function ListBusinesses(req, res) {
   let id = req.params.id;
-  BusinessesSchema.find({status: true, categories: {category: id}}, 'name -_id', (err, Businesses) => {
+  BusinessesSchema.find({status: true/*, categories: {category: id}*/}, /*'name -_id',*/ (err, Businesses) => {
     if (Businesses.length == 0) {
       return res.status(202).send({message: 'No businesses to show'});
     } else {
@@ -131,7 +131,7 @@ function ListBusinessesByCategory(req, res) {
   if (filter === 'def')
     mFilter = { membershipValue: 1 };
   else if (filter === 'near')
-    mFilter = { loc: 1, name: 1 };
+    mFilter = { name: 1 };
   else if (filter === 'score')
     mFilter = { score: 1 };
     BusinessesSchema.aggregate(
@@ -150,7 +150,7 @@ function ListBusinessesByCategory(req, res) {
       ],
       function(err, Businesses) {
         if (err) {
-          return res.status(202).send({message: 'Something went wrong' + err});
+          return res.status(202).send({message: 'Something went wrong'});
         } else {
           if (Businesses.length == 0) {
           return res.status(202).send({message: 'No businesses to show'});
