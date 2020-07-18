@@ -127,9 +127,9 @@ function ListBusinessesByCategory(req, res) {
     coordinates: [lng, lat]
   };
   let filter = req.params.filter;
-  let mFilter = '';
-  if (filter === 'def')
-    mFilter = { membershipValue: 1 };
+  let mFilter = { membershipValue: 1 };
+  if (filter === 'near')
+    mFilter = { 'dist.calculated': 1, 'name': 1 };
   else if (filter === 'score')
     mFilter = { score: 1 };
     BusinessesSchema.aggregate(
