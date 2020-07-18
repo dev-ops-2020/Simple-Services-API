@@ -130,8 +130,6 @@ function ListBusinessesByCategory(req, res) {
   let mFilter = '';
   if (filter === 'def')
     mFilter = { membershipValue: 1 };
-  else if (filter === 'near')
-    mFilter = { name: 1 };
   else if (filter === 'score')
     mFilter = { score: 1 };
     BusinessesSchema.aggregate(
@@ -151,12 +149,10 @@ function ListBusinessesByCategory(req, res) {
       function(err, Businesses) {
         if (err) {
           return res.status(202).send({message: 'Something went wrong'});
-        } else {
-          if (Businesses.length == 0) {
+        } else if (Businesses.length == 0) {
           return res.status(202).send({message: 'No businesses to show'});
         } else {
           return res.status(200).send({message: 'Ok', businesses: Businesses});
-        }
         }
       }
     );  
