@@ -83,21 +83,10 @@ function DeleteUser(req, res) {
   });
 }
 
-function ListUsers(req, res) {
-  UsersSchema.find({status: true}, (err, Users) => {
-    if (Users.length == 0) {
-      return res.status(202).send({message: 'No users to show'});
-    } else {
-      return res.status(200).send({message: 'Ok', users: Users});
-    }
-  });
-}
-
 module.exports = {
   SignUp,
   SignIn,
   ReadUser,
   UpdateUser,
-  DeleteUser,
-  ListUsers
+  DeleteUser
 };

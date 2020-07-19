@@ -3,54 +3,33 @@ const { Schema, model } = require('mongoose');
 const MembershipsSchema = Schema(
   {
     id: {
-      type: String,
-      require: false
-    },
-    status: {
-      type: Boolean,
-      default: true
+      type: String
     },
     name: {
       type: String,
-      unique: true,
-      require: true
+      unique: true
     },
-    description: {
-      type: String,
-      require: true
+    desc: {
+      type: String
     },
-    color: {
-      type: String,
-      require: true
+    products: {
+      type: Number
     },
-    priority: {
-      type: Number,
-      require: true
+    pictures: {
+      type: Number
     },
-    extras: {
-      type: String,
-      require: true
+    entries: {
+      type: Number
     },
     price: {
-      type: Number,
-      require: true
+      type: Number
     },
     priceOff: {
-      type: Number,
-      require: true
+      type: Number
     },
-    priceExtraCoupon: {
-      type: Number,
-      require: true
+    priority: {
+      type: Number
     },
-    quantityCoupons: {
-      type: Number,
-      require: true
-    },
-    quantityPromotion: {
-      type: Number,
-      require: true
-    }
   },
   {
     timestamps: true

@@ -3,11 +3,11 @@ const router = Router();
 
 // Controllers
 const IndexController = require('../controllers/index');
+const UsersController = require('../controllers/users');
+const BusinessesController = require('../controllers/businesses');
 const CategoriesController = require('../controllers/categories');
 const MembershipsController = require('../controllers/memberships');
-const BusinessesController = require('../controllers/businesses');
 const CommentsController = require('../controllers/comments');
-const UsersController = require('../controllers/users');
 const ProductsController = require('../controllers/products');
 const CartController = require('../controllers/cart');
 
@@ -15,23 +15,16 @@ const CartController = require('../controllers/cart');
 router.get('', IndexController.Index);
 router.get('/terms', IndexController.Terms);
 
-// Categories
-router.post('/categories', CategoriesController.CreateCategory);
-router.get('/categories/:id', CategoriesController.ReadCategory);
-router.put('/categories/:id', CategoriesController.UpdateCategory);
-router.post('/categories/:id', CategoriesController.DeleteCategory);
-router.get('/categories', CategoriesController.ListCategories);
-
-// Memberships
-router.post('/memberships', MembershipsController.CreateMembership);
-router.get('/memberships/:id', MembershipsController.ReadMembership);
-router.put('/memberships/:id', MembershipsController.UpdateMembership);
-router.post('/memberships/:id', MembershipsController.DeleteMembership);
-router.get('/memberships', MembershipsController.ListMemberships);
+// Users
+router.post('/signup/user', UsersController.SignUp);
+router.post('/signin/user', UsersController.SignIn);
+router.get('/users/:id', UsersController.ReadUser);
+router.put('/users/:id', UsersController.UpdateUser);
+router.post('/users/:id', UsersController.DeleteUser);
 
 // Businesses
-router.post('/login', BusinessesController.LogIn);
-router.post('/businesses', BusinessesController.CreateBusiness);
+router.post('/signup/business', BusinessesController.SignUp);
+router.post('/signin/business', BusinessesController.SignIn);
 router.get('/businesses/:id', BusinessesController.ReadBusiness);
 router.put('/businesses/:id', BusinessesController.UpdateBusiness);
 router.post('/businesses/:id', BusinessesController.DeleteBusiness);
@@ -39,20 +32,19 @@ router.get('/businesses/category/:id', BusinessesController.ListBusinesses); // 
 router.get('/businesses/category/:id/:filter/:lat/:lng/:maxD', BusinessesController.ListBusinessesByCategory);
 //router.get('businesses/user/:id', BusinessesController.ListBusinessesByUserFav);
 
-// Users
-router.post('/signin', UsersController.SignIn);
-router.post('/signup', UsersController.SignUp);
-router.get('/users/:id', UsersController.ReadUser);
-router.put('/users/:id', UsersController.UpdateUser);
-router.post('/users/:id', UsersController.DeleteUser);
-//router.get('/users', UsersController.ListUsers);
+// Categories
+router.post('/categories', CategoriesController.CreateCategory);
+router.get('/categories', CategoriesController.ListCategories);
+
+// Memberships
+router.post('/memberships', MembershipsController.CreateMembership);
+router.get('/memberships', MembershipsController.ListMemberships);
 
 // Comments
 router.post('/comments', CommentsController.CreateComment);
 router.get('/comments/:id', CommentsController.ReadComment);
 router.put('/comments/:id', CommentsController.UpdateComment);
 router.post('/comments/:id', CommentsController.DeleteComment);
-router.get('/comments', CommentsController.ListComments)
 router.get('/comments/business/:id', CommentsController.ListCommentsByBusiness)
 
 //Products

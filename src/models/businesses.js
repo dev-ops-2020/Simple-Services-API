@@ -3,8 +3,7 @@ const { Schema, model } = require('mongoose');
 const BusinessesSchema = Schema(
   {
     id: {
-      type: String,
-      require: false
+      type: String
     },
     status: {
       type: Boolean,
@@ -15,56 +14,44 @@ const BusinessesSchema = Schema(
       type: String, // Products || Services
     },
     owner: {
-      type: String,
-      require: true
+      type: String
     },
     email: {
       type: String,
-      unique: true,
-      require: true
+      unique: true
     },
     pass: {
-      type: String,
-      require: true
+      type: String
     },
     token: {
       type: String,
-      require: true,
       Default: '0000'
     },
     deviceId: {
       type: String,
-      require: true,
       Default: '0000'
     },
     // Business info
     type: {
-      type: String,
-      require: true
+      type: String
     },
     logo: {
-      type: String,
-      require: true
+      type: String
     },
     name: {
-      type: String,
-      require: true
+      type: String
     },
     desc: {
-      type: String,
-      require: true
+      type: String
     },
     slogan: {
-      type: String,
-      require: true
+      type: String
     },
     phone: {
-      type: String,
-      require: true
+      type: String
     },
     address: {
-      type: String,
-      require: true
+      type: String
     },
     lat: {
       type: Number
@@ -104,7 +91,8 @@ const BusinessesSchema = Schema(
       type: []
     },
     membershipId: {
-      type: String
+      type: String,
+      default: '0000' // TODO change
     },
     membershipValue: {
       type: String

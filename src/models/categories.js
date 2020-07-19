@@ -3,8 +3,7 @@ const { Schema, model } = require('mongoose');
 const CategoriesSchema = Schema(
   {
     id: {
-      type: String,
-      require: false
+      type: String
     },
     status: {
       type: Boolean,
@@ -12,16 +11,13 @@ const CategoriesSchema = Schema(
     },
     name: {
       type: String,
-      unique: true,
-      require: true
+      unique: true
     },
     description: {
-      type: String,
-      require: true
+      type: String
     },
     icon: {
-      type: String,
-      require: true
+      type: String
     }
   },
   {

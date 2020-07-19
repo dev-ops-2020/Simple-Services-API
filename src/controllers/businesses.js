@@ -2,7 +2,7 @@ const BusinessesSchema = require('../models/businesses');
 const bcrypt = require('bcrypt');
 const service = require('../services/index');
 
-function CreateBusiness(req, res) {
+function SignUp(req, res) {
   let Business = new BusinessesSchema();
   // Owner info
   Business.owner = req.body.owner;
@@ -48,7 +48,7 @@ function CreateBusiness(req, res) {
   });
 }
 
-function LogIn(req, res) {
+function SignIn(req, res) {
   let email = req.body.email;
   let pass = req.body.pass;
   BusinessesSchema.findOne({email}, (err, Business) => {
@@ -159,8 +159,8 @@ function ListBusinessesByCategory(req, res) {
 }
 
 module.exports = {
-  LogIn,
-  CreateBusiness,
+  SignUp,
+  SignIn,
   ReadBusiness,
   UpdateBusiness,
   DeleteBusiness,

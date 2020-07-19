@@ -3,32 +3,25 @@ const { Schema, model } = require('mongoose');
 const CommentsSchema = Schema(
   {
     id: {
-      type: String,
-      require: false
+      type: String
     },
     comment: {
-      type: String,
-      require: true
+      type: String
     },
     date: {
-      type: String,
-      require: true
+      type: String
     },
     userId: {
-      type: String,
-      require: true
+      type: String
     },
     userAlias: {
-      type: String,
-      require: true
+      type: String
     },
     userPicture: {
-      type: String,
-      require: true
+      type: String
     },
     businessId: {
-      type: String,
-      require: true
+      type: String
     }
   },
   {

@@ -3,16 +3,13 @@ const { Schema, model } = require('mongoose');
 const CartSchema = Schema(
   {
     id: {
-      type: String,
-      require: false
+      type: String
     },
     userId: {
-      type: String,
-      require: true
+      type: String
     },
     businessId: {
-      type: String,
-      require: true
+      type: String
     },
     products: {      
       type: []

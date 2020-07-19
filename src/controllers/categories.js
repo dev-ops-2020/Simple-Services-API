@@ -15,46 +15,6 @@ function CreateCategory(req, res) {
   });
 }
 
-function ReadCategory(req, res) {
-  let id = req.params.id;
-  CategoriesSchema.findById(id, (err, Category) => {
-    if (!Category) {
-      return res.status(202).send({message: 'Category not found'});
-    } else if (!Category.status) {
-      return res.status(202).send({message: 'Category deleted...'});
-    } else {
-      return res.status(200).send({message: 'Category read', category: Category});
-    }
-  });
-}
-
-function UpdateCategory(req, res) {
-  let id = req.params.id;
-  let Category = req.body;
-  CategoriesSchema.findByIdAndUpdate(id, Category, (err, Category) => {
-    if (err) {
-      return res.status(202).send({message: 'Update failed'});
-    } else if (!Category.status) {
-      return res.status(202).send({message: 'Category deleted...'});
-    } else {      
-      return res.status(200).send({message: 'Category updated'});
-    }
-  });
-}
-
-function DeleteCategory(req, res) {
-  let id = req.params.id;
-  CategoriesSchema.findById(id, (err, Category) => {
-    if (!Category) {
-      return res.status(202).send({message: 'Category not found'});
-    } else {
-      CategoriesSchema.findByIdAndUpdate(id, {$set: {status: false}}, (err, Category) => {
-        return res.status(200).send({message: 'Category deleted'});
-      });
-    }
-  });
-}
-
 function ListCategories(req, res) {
   CategoriesSchema.find({status: true}, (err, Categories) => {
     if (Categories.length == 0) {
@@ -67,8 +27,5 @@ function ListCategories(req, res) {
 
 module.exports = {
   CreateCategory,
-  ReadCategory,
-  UpdateCategory,
-  DeleteCategory,
   ListCategories
 };

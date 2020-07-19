@@ -12,18 +12,16 @@ function createToken(user) {
 }
 
 function decodeToken(token) {
-    const decode = new Promise((resolve,reject) =>{
+    const decode = new Promise((resolve,reject) => {
         try {
             const payload = jwt.decode(token, process.env.JWT_KEY)
-
-            if(payload.exp <= moment().unix()){
+            if(payload.exp <= moment().unix()) {
                 reject({
                     status: 401,
                     message: 'Expired token'
                 })
             }            
             resolve(payload.sub)
-        
         } catch (err) {
             reject({
                 status: 200,
