@@ -31,9 +31,9 @@ function SignUp(req, res) {
     Business.schedule = req.body.schedule;
     Business.categories = req.body.categories;
     Business.pictures = req.body.pictures;
-    Business.membershipId = '';
-    Business.membershipValue = 1;
-    Business.score = 1;
+    Business.membershipId = '5f13e15d01b8920004430b89';
+    Business.membershipValue = 4;
+    Business.score = 4;
     if (Business.logo == 'No Logo')
       Business.logo = 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fbusinesses%2F_____No_Logo.png?alt=media';
     else

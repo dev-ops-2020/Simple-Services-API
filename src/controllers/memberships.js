@@ -20,7 +20,7 @@ function CreateMembership(req, res) {
 }
 
 function ListMemberships(req, res) {
-  MembershipsSchema.find({status: true}, (err, Memberships) => {
+  MembershipsSchema.find({}, (err, Memberships) => {
     if (Memberships.length == 0) {
       return res.status(202).send({message: 'No memberships to show'});
     } else {
