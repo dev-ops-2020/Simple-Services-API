@@ -144,7 +144,7 @@ function ListBusinessesByCategory(req, res) {
       ],
       function(err, Businesses) {
         if (err) {
-          return res.status(202).send({message: 'Something went wrong'});
+          return res.status(202).send({message: 'Something went wrong' +err});
         } else if (Businesses.length == 0) {
           return res.status(202).send({message: 'No businesses to show'});
         } else {
