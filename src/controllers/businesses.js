@@ -28,16 +28,12 @@ function SignUp(req, res) {
     Business.ig = req.body.ig;
     Business.wa = req.body.wa;
     Business.delivery = req.body.delivery;
+    Business.membershipId = req.body.membershipId;
+    Business.priority = req.body.priority;
+    Business.score = req.body.score;
     Business.schedule = req.body.schedule;
     Business.categories = req.body.categories;
     Business.pictures = req.body.pictures;
-    Business.membershipId = req.body.membershipId;
-    Business.membershipPriority = req.body.membershipPriority;
-    Business.score = 0;
-    if (Business.logo == 'No Logo')
-      Business.logo = 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fbusinesses%2F_____No_Logo.png?alt=media';
-    else
-      Business.logo = req.body.logo;
     Business.save((err, Business) => {
       if (err) {
         return res.status(202).send({message: 'Error'});

@@ -81,6 +81,15 @@ const BusinessesSchema = Schema(
     delivery: {
       type: Boolean
     },
+    membershipId: {
+      type: String
+    },
+    priority: {
+      type: Number
+    },
+    score: {
+      type: Number
+    },
     schedule: {
       type: []
     },
@@ -89,16 +98,6 @@ const BusinessesSchema = Schema(
     },
     pictures: {
       type: []
-    },
-    membershipId: {
-      type: String,
-      default: '0000' // TODO change
-    },
-    membershipPriority: {
-      type: Number
-    },
-    score: {
-      type: Number
     },
   },
   {
