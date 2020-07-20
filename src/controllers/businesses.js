@@ -31,9 +31,9 @@ function SignUp(req, res) {
     Business.schedule = req.body.schedule;
     Business.categories = req.body.categories;
     Business.pictures = req.body.pictures;
-    Business.membershipId = '5f13e15d01b8920004430b89';
-    Business.membershipValue = 4;
-    Business.score = 4;
+    Business.membershipId = req.body.membershipId;
+    Business.membershipPriority = req.body.membershipPriority;
+    Business.score = 0;
     if (Business.logo == 'No Logo')
       Business.logo = 'https://firebasestorage.googleapis.com/v0/b/simple-services-25f81.appspot.com/o/images%2Fbusinesses%2F_____No_Logo.png?alt=media';
     else
@@ -127,7 +127,7 @@ function ListBusinessesByCategory(req, res) {
     coordinates: [lng, lat]
   };
   let filter = req.params.filter;
-  let mFilter = { membershipValue: 1 };
+  let mFilter = { membershipPriority: 1 };
   if (filter === 'near')
     mFilter = { 'dist.calculated': 1, 'name': 1 };
   else if (filter === 'score')

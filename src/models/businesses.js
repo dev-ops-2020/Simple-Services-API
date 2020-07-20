@@ -94,11 +94,11 @@ const BusinessesSchema = Schema(
       type: String,
       default: '0000' // TODO change
     },
-    membershipValue: {
-      type: String
+    membershipPriority: {
+      type: Number
     },
     score: {
-      type: String
+      type: Number
     },
   },
   {
