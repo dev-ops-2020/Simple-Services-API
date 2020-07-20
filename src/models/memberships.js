@@ -12,15 +12,6 @@ const MembershipsSchema = Schema(
     desc: {
       type: String
     },
-    products: {
-      type: Number
-    },
-    pictures: {
-      type: Number
-    },
-    entries: {
-      type: Number
-    },
     price: {
       type: Number
     },
@@ -28,6 +19,15 @@ const MembershipsSchema = Schema(
       type: Number
     },
     priority: {
+      type: Number
+    },
+    products: {
+      type: Number
+    },
+    pictures: {
+      type: Number
+    },
+    entries: {
       type: Number
     },
   },
