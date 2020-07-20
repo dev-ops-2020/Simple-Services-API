@@ -13,10 +13,10 @@ const MembershipsSchema = Schema(
       type: String
     },
     price: {
-      type: Number
+      type: String
     },
     priceOff: {
-      type: Number
+      type: String
     },
     priority: {
       type: Number
