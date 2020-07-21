@@ -17,11 +17,13 @@ function CreateCategory(req, res) {
 
 function ReadCategory(req, res) {
   let id = req.params.id;
-  CategoriesSchema.findById({id, status: true}, (err, Categories) => {
-    if (Categories.length == 0) {
-      return res.status(202).send({message: 'No categories to show'});
+  CategoriesSchema.findById(id, (err, Category) => {
+    if (!Category) {
+      return res.status(202).send({message: 'Category not found'});
+    } else if (!Category.status) {
+      return res.status(202).send({message: 'Category deleted...'});
     } else {
-      return res.status(200).send({message: 'Ok', categories: Categories});
+      return res.status(200).send({message: 'Category read', category: Category});
     }
   });
 }
