@@ -15,6 +15,17 @@ function CreateCategory(req, res) {
   });
 }
 
+function ReadCategory(req, res) {
+  let id = req.params.id;
+  CategoriesSchema.findById({id, status: true}, (err, Categories) => {
+    if (Categories.length == 0) {
+      return res.status(202).send({message: 'No categories to show'});
+    } else {
+      return res.status(200).send({message: 'Ok', categories: Categories});
+    }
+  });
+}
+
 function ListCategories(req, res) {
   CategoriesSchema.find({status: true}, (err, Categories) => {
     if (Categories.length == 0) {
@@ -27,5 +38,6 @@ function ListCategories(req, res) {
 
 module.exports = {
   CreateCategory,
+  ReadCategory,
   ListCategories
 };
