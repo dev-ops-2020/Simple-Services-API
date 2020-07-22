@@ -1,5 +1,5 @@
 const MembershipsSchema = require('../models/memberships');
-
+/*
 function CreateMembership(req, res) {
   let Membership = new MembershipsSchema();
   Membership.name = req.body.name;
@@ -18,7 +18,7 @@ function CreateMembership(req, res) {
     }
   });
 }
-
+*/
 function ListMemberships(req, res) {
   MembershipsSchema.find({}, (err, Memberships) => {
     if (Memberships.length == 0) {

@@ -5,7 +5,9 @@ const service = require('../services/index');
 function SignUp(req, res) {
   let Business = new BusinessesSchema();
   // Owner info
+  Business.dui = req.body.dui;
   Business.owner = req.body.owner;
+  Business.phone = req.body.phone;
   Business.email = req.body.email;
   Business.pass = req.body.pass;
 
@@ -19,7 +21,6 @@ function SignUp(req, res) {
     Business.name = req.body.name;
     Business.desc = req.body.desc;
     Business.slogan = req.body.slogan;
-    Business.phone = req.body.phone;
     Business.address = req.body.address;
     Business.lat = req.body.lat;
     Business.lng = req.body.lng;

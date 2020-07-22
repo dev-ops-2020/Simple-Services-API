@@ -10,10 +10,13 @@ const BusinessesSchema = Schema(
       default: true // Change to false on deploy to production
     },
     // Owner info
-    type: {
-      type: String, // Products || Services
+    dui: {
+      type: String
     },
     owner: {
+      type: String
+    },
+    phone: {
       type: String
     },
     email: {
@@ -33,7 +36,7 @@ const BusinessesSchema = Schema(
     },
     // Business info
     type: {
-      type: String
+      type: String, // Products || Services
     },
     logo: {
       type: String
@@ -45,9 +48,6 @@ const BusinessesSchema = Schema(
       type: String
     },
     slogan: {
-      type: String
-    },
-    phone: {
       type: String
     },
     address: {
