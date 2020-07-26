@@ -16,6 +16,7 @@ function SignUp(req, res) {
     Business.token = service.createToken(Business);
     Business.deviceId = req.body.deviceId;
     // Business info
+    Business.nrc = req.body.nrc;
     Business.type = req.body.type;
     Business.logo = req.body.logo;
     Business.name = req.body.name;

@@ -35,6 +35,10 @@ const BusinessesSchema = Schema(
       Default: '0000'
     },
     // Business info
+    nrc: {
+      type: String,
+      Default: '0000'
+    },
     type: {
       type: String, // Products || Services
     },
