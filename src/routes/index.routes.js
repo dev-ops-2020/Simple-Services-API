@@ -39,6 +39,7 @@ router.get('/categories', CategoriesController.ListCategories);
 
 // Memberships
 //router.post('/memberships', MembershipsController.CreateMembership);
+router.get('/memberships/:id', MembershipsController.ReadMembership);
 router.get('/memberships', MembershipsController.ListMemberships);
 
 // Comments

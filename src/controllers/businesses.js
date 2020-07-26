@@ -103,7 +103,7 @@ function DeleteBusiness(req, res) {
     }
   });
 }
-
+// Test
 function ListBusinesses(req, res) {
   let id = req.params.id;
   BusinessesSchema.find({status: true/*, categories: {category: id}*/}, /*'name -_id',*/ (err, Businesses) => {

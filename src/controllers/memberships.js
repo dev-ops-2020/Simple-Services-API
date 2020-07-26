@@ -19,6 +19,17 @@ function CreateMembership(req, res) {
   });
 }
 */
+function ReadMembership(req, res) {
+  let id = req.params.id;
+  MembershipsSchema.findById(id, (err, Membership) => {
+    if (!Membership) {
+      return res.status(202).send({message: 'Membership not found'});
+    } else {
+      return res.status(200).send({message: 'Membership read', membership: Membership});
+    }
+  });
+}
+
 function ListMemberships(req, res) {
   MembershipsSchema.find({}, (err, Memberships) => {
     if (Memberships.length == 0) {
@@ -31,5 +42,6 @@ function ListMemberships(req, res) {
 
 module.exports = {
   //CreateMembership,
+  ReadMembership,
   ListMemberships
 };
