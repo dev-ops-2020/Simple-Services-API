@@ -30,6 +30,6 @@ function ListMemberships(req, res) {
 }
 
 module.exports = {
-  CreateMembership,
+  //CreateMembership,
   ListMemberships
 };
