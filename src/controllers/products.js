@@ -51,7 +51,7 @@ function DeleteProduct(req, res) {
       return res.status(202).send({message: 'Product not found'});
     } else {
       ProductsSchema.findByIdAndDelete(id, (err, Product) => {
-        return res.status(200).send({message: 'Product deleted'});
+        return res.status(200).send({message: 'Product deleted', product: Product});
       });
     }
   });
