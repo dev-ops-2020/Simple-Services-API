@@ -6,7 +6,8 @@ const ProductsSchema = Schema(
       type: String
     },
     type: {
-      type: String
+      type: String,
+      unique: true
     },
     name: {
       type: String
