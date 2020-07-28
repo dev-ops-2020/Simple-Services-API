@@ -39,7 +39,7 @@ function UpdateProduct(req, res) {
     if (err) {
       return res.status(202).send({message: 'Update failed'});
     } else {      
-      return res.status(200).send({message: 'Product updated'});
+      return res.status(200).send({message: 'Product updated', product: Product});
     }
   });
 }
