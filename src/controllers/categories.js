@@ -1,5 +1,5 @@
 const CategoriesSchema = require('../models/categories');
-
+/*
 function CreateCategory(req, res) {
   let Category = new CategoriesSchema();
   Category.name = req.body.name;
@@ -13,7 +13,7 @@ function CreateCategory(req, res) {
     }
   });
 }
-
+*/
 function ReadCategory(req, res) {
   let id = req.params.id;
   CategoriesSchema.findById(id, (err, Category) => {

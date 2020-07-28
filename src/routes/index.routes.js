@@ -33,7 +33,7 @@ router.get('/businesses/category/:id/:filter/:lat/:lng/:maxD', BusinessesControl
 //router.get('businesses/user/:id', BusinessesController.ListBusinessesByUserFav);
 
 // Categories
-router.post('/categories', CategoriesController.CreateCategory);
+//router.post('/categories', CategoriesController.CreateCategory);
 router.get('/categories/:id', CategoriesController.ReadCategory);
 router.get('/categories', CategoriesController.ListCategories);
 
