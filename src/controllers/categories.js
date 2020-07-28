@@ -38,7 +38,7 @@ function ListCategories(req, res) {
 }
 
 module.exports = {
-  CreateCategory,
+  //CreateCategory,
   ReadCategory,
   ListCategories
 };
