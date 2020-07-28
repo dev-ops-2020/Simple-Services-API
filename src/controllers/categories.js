@@ -4,7 +4,7 @@ function CreateCategory(req, res) {
   let Category = new CategoriesSchema();
   Category.name = req.body.name;
   Category.icon = req.body.icon;
-  Category.status = req.body.status;
+  Category.status = true;
   Category.save((err, Category) => {
     if (err) {
       return res.status(202).send({message: 'Error creating category'});
