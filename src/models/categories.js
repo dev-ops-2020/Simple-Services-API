@@ -13,9 +13,6 @@ const CategoriesSchema = Schema(
       type: String,
       unique: true
     },
-    description: {
-      type: String
-    },
     icon: {
       type: String
     }

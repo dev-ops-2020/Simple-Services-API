@@ -3,7 +3,6 @@ const CategoriesSchema = require('../models/categories');
 function CreateCategory(req, res) {
   let Category = new CategoriesSchema();
   Category.name = req.body.name;
-  Category.description = req.body.description;
   Category.icon = req.body.icon;
   Category.status = req.body.status;
   Category.save((err, Category) => {
