@@ -3,6 +3,7 @@ const ProductsSchema = require('../models/products');
 function CreateProduct(req, res) {
   let Product = new ProductsSchema();
   Product.type = req.body.type;
+  Product.sku = req.body.sku;
   Product.name = req.body.name;
   Product.desc = req.body.desc;
   Product.price = req.body.price;

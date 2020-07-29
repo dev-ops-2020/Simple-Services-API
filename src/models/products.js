@@ -9,6 +9,9 @@ const ProductsSchema = Schema(
       type: String,
       unique: true
     },
+    sku: {
+      type: String
+    },
     name: {
       type: String
     },
