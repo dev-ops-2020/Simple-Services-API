@@ -6,8 +6,7 @@ const ProductsSchema = Schema(
       type: String
     },
     type: {
-      type: String,
-      unique: true
+      type: String
     },
     sku: {
       type: String
