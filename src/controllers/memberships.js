@@ -4,10 +4,10 @@ function CreateMembership(req, res) {
   let Membership = new MembershipsSchema();
   Membership.name = req.body.name;
   Membership.desc = req.body.desc;
+  Membership.icon = req.body.icon;
   Membership.price = req.body.price;
   Membership.priceOff = req.body.priceOff;
   Membership.priority = req.body.priority;
-  Membership.products = req.body.products;
   Membership.pictures = req.body.pictures;
   Membership.entries = req.body.entries;
   Membership.save((err, Membership) => {

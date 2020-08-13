@@ -12,6 +12,9 @@ const MembershipsSchema = Schema(
     desc: {
       type: String
     },
+    icon: {
+      type: String
+    },
     price: {
       type: String
     },
@@ -19,9 +22,6 @@ const MembershipsSchema = Schema(
       type: String
     },
     priority: {
-      type: Number
-    },
-    products: {
       type: Number
     },
     pictures: {
