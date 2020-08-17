@@ -10,6 +10,7 @@ const MembershipsController = require('../controllers/memberships');
 const CommentsController = require('../controllers/comments');
 const ProductsController = require('../controllers/products');
 const CartController = require('../controllers/cart');
+const EntriesController = require('../controllers/entries');
 
 // First route
 router.get('', IndexController.Index);
@@ -67,5 +68,10 @@ router.get('/cart/:cartId/:userId/:businessId', CartController.ReadCart);
 router.put('/cart/:cartId/:userId/:businessId', CartController.UpdateCart);
 router.post('/cart/:id', CartController.DeleteCart);
 router.post('/cart/:cartId/:productId', CartController.DeleteCartProduct);
+
+//Entries
+router.post('/entries', EntriesController.CreateEntry);
+router.get('/entries/:id', EntriesController.ReadEntry);
+router.get('/entries', EntriesController.ListEntries);
 
 module.exports = router;

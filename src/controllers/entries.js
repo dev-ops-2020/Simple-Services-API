@@ -1,13 +1,18 @@
 const EntriesSchema = require('../models/entries');
+const moment = require('moment');
 
 function CreateEntry(req, res) {
+  moment.locale('es');
+  const date = moment().format('L');
+  moment.locale('es-us');
+  const time = moment().format('LT');
+  const current = date + " " + time;
   let Entry = new EntriesSchema();
   Entry.image = req.body.image;
   Entry.desc = req.body.desc;
-  Entry.date = Date();
-  Entry.status = True;
+  Entry.date = current;
+  Entry.status = true;
   Entry.businessId = req.body.businessId;
-  console.log(Entry.date);
   Entry.save((err, Entry) => {
     if (err) {
       return res.status(202).send({message: 'Error creating entry'});
@@ -32,7 +37,7 @@ function ReadEntry(req, res) {
 
 function ListEntries(req, res) {
   EntriesSchema.find({status: true}, (err, Entries) => {
-    if (Entries.length == 0 || !Entries.status) {
+    if (Entries.length == 0 && !Entries.status) {
       return res.status(202).send({message: 'No entries to show'});
     } else {
       return res.status(200).send({message: 'Ok', entries: Entries});

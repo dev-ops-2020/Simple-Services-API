@@ -17,6 +17,17 @@ const EntriesSchema = Schema(
     status: {
       type: String
     },
+    likes: {
+      type: Number
+    },
+    liked: {
+      type: Boolean,
+      default: false
+    },
+    saved: {
+      type: Boolean,
+      default: false
+    },
     businessId: {
       type: String
     }
