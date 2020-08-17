@@ -14,9 +14,6 @@ const EntriesSchema = Schema(
     date: {
       type: String
     },
-    status: {
-      type: String
-    },
     likes: {
       type: Number
     },
@@ -27,6 +24,10 @@ const EntriesSchema = Schema(
     saved: {
       type: Boolean,
       default: false
+    },    
+    status: {
+      type: Boolean,
+      default: true
     },
     businessId: {
       type: String

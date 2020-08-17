@@ -11,7 +11,6 @@ function CreateEntry(req, res) {
   Entry.image = req.body.image;
   Entry.desc = req.body.desc;
   Entry.date = current;
-  Entry.status = true;
   Entry.businessId = req.body.businessId;
   Entry.save((err, Entry) => {
     if (err) {
