@@ -11,12 +11,13 @@ const EntriesSchema = Schema(
     desc: {
       type: String
     },
+    likes: {
+      type: Number,
+      default: 0
+    },
     date: {
       type: String
-    },
-    likes: {
-      type: Number
-    },
+    },/*
     liked: {
       type: Boolean,
       default: false
@@ -24,7 +25,7 @@ const EntriesSchema = Schema(
     saved: {
       type: Boolean,
       default: false
-    },    
+    },*/
     status: {
       type: Boolean,
       default: true

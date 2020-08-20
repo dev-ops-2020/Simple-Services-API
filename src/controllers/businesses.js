@@ -28,7 +28,7 @@ function SignUp(req, res) {
     Business.loc = {type: 'Point', coordinates: [parseFloat(req.body.lng), parseFloat(req.body.lat)]}
     Business.fb = 'https://www.facebook.com/'+req.body.fb;
     Business.ig = 'https://www.instagram.com/'+req.body.ig;
-    Business.wa = 'https://api.whatsapp.com/send?phone=503'+req.body.wa;
+    Business.wa = 'https://api.whatsapp.com/send?phone='+req.body.wa;
     Business.delivery = req.body.delivery;
     Business.membershipId = req.body.membershipId;
     Business.priority = req.body.priority;
