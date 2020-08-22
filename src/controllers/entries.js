@@ -44,8 +44,20 @@ function ListEntries(req, res) {
   }).sort({date: 1});
 }
 
+function ListEntriesByBusiness(req, res) {
+  let id = req.params.id;
+  EntriesSchema.find({businessId: id}, (err, Entries) => {
+    if (Entries.length == 0) {
+      return res.status(202).send({message: 'No entries to show'});
+    } else {
+      return res.status(200).send({message: 'Ok', entries: Entries});
+    }
+  });
+}
+
 module.exports = {
   CreateEntry,
   ReadEntry,
-  ListEntries
+  ListEntries,
+  ListEntriesByBusiness
 };
