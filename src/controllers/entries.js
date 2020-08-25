@@ -56,9 +56,33 @@ function ListEntriesByBusiness(req, res) {
   }).sort({date: -1});
 }
 
+function LikeEntry(req, res) {  
+  let id = req.params.id;
+  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: likes += 1}}, (err, Entry) => {
+    if (!err) {
+      return res.status(200).send({message: 'Ok'});
+    } else {
+      return res.status(202).send({message: 'Error'});
+    }
+  });   
+}
+
+function UnlikeEntry(req, res) {  
+  let id = req.params.id;
+  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: likes -= 1}}, (err, Entry) => {
+    if (!err) {
+      return res.status(200).send({message: 'Ok'});
+    } else {
+      return res.status(202).send({message: 'Error'});
+    }
+  });   
+}
+
 module.exports = {
   CreateEntry,
   ReadEntry,
   ListEntries,
-  ListEntriesByBusiness
+  ListEntriesByBusiness,
+  LikeEntry,
+  UnlikeEntry
 };
