@@ -1,14 +1,5 @@
 const EntriesSchema = require('../models/entries');
 const moment = require('moment');
-const momentz= require('moment-timezone');
-
-var sv = momentz.tz(moment().format(), "America/El_Salvador");
-console.log(sv);
-moment.locale('es');
-const date = moment().format('L');
-const time = moment().format('LTS');
-const current = date + "-" + time;
-console.log(current);
 
 function CreateEntry(req, res) {
   moment.locale('es');
@@ -49,7 +40,7 @@ function ListEntries(req, res) {
     } else {
       return res.status(200).send({message: 'Ok', entries: Entries});
     }
-  });
+  }).sort({date: -1});
 }
 
 function ListEntriesByBusiness(req, res) {
@@ -60,7 +51,7 @@ function ListEntriesByBusiness(req, res) {
     } else {
       return res.status(200).send({message: 'Ok', entries: Entries});
     }
-  });
+  }).sort({date: -1});
 }
 
 module.exports = {
