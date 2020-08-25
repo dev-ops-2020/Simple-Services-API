@@ -1,11 +1,12 @@
 const EntriesSchema = require('../models/entries');
 const moment = require('moment');
+const momentz= require('moment-timezone');
+
+
 
 function CreateEntry(req, res) {
   moment.locale('es');
-  const date = moment().format('L');
-  const time = moment().format('LTS');
-  const current = date + "-" + time;
+  const current = momentz.tz(moment().format(), "America/El_Salvador");
   let Entry = new EntriesSchema();
   Entry.image = req.body.image;
   Entry.desc = req.body.desc;
