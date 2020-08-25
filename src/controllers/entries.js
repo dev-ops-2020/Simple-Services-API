@@ -58,7 +58,7 @@ function ListEntriesByBusiness(req, res) {
 
 function LikeEntry(req, res) {  
   let id = req.params.id;
-  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: likes += 1}}, (err, Entry) => {
+  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: req.body.likes}}, (err, Entry) => {
     if (!err) {
       return res.status(200).send({message: 'Ok'});
     } else {
@@ -69,7 +69,7 @@ function LikeEntry(req, res) {
 
 function UnlikeEntry(req, res) {  
   let id = req.params.id;
-  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: likes -= 1}}, (err, Entry) => {
+  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: req.body.likes}}, (err, Entry) => {
     if (!err) {
       return res.status(200).send({message: 'Ok'});
     } else {
