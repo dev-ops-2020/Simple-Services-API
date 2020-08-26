@@ -4,7 +4,7 @@ const momentz = require('moment-timezone');
 
 function CreateEntry(req, res) {
   moment.locale('es');
-  const sv = moment.tz(moment.format(), "America/El_Salvador");
+  const sv = momentz.tz(moment().format(), "America/El_Salvador");
   const date = sv.format('L');
   const time = sv.format('LTS');
   const current = date + "-" + time;
