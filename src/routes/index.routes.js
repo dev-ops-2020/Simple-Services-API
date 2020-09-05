@@ -74,7 +74,8 @@ router.post('/entries', EntriesController.CreateEntry);
 router.get('/entries/:id', EntriesController.ReadEntry);
 router.get('/entries', EntriesController.ListEntries);
 router.get('/entries/business/:id', EntriesController.ListEntriesByBusiness);
-router.post('/entries/like/:id', EntriesController.LikeEntry);
-router.post('/entries/unlike/:id', EntriesController.UnlikeEntry);
+router.get('/entries/user/:id/', EntriesController.ListEntriesLikedByUser);
+router.post('/entries/like/:userId/:entryId', EntriesController.LikeEntry);
+router.post('/entries/unlike/:userId/:entryId', EntriesController.UnlikeEntry);
 
 module.exports = router;

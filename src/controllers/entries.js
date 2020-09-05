@@ -1,4 +1,5 @@
 const EntriesSchema = require('../models/entries');
+const LikesSchema = require('../models/likes');
 const moment = require('moment');
 const momentz = require('moment-timezone');
 
@@ -56,26 +57,54 @@ function ListEntriesByBusiness(req, res) {
   }).sort({date: -1});
 }
 
-function LikeEntry(req, res) {  
+function ListEntriesLikedByUser(req, res) {
   let id = req.params.id;
-  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: req.body.likes}}, (err, Entry) => {
-    if (!err) {
-      return res.status(200).send({message: 'Ok'});
+  LikesSchema.find({userId: id}, (err, Entries) => {
+    if (Entries.length == 0) {
+      return res.status(202).send({message: 'No entries to show'});
     } else {
-      return res.status(202).send({message: 'Error'});
+      return res.status(200).send({message: 'Ok', entries: Entries});
     }
-  });   
+  });
 }
 
-function UnlikeEntry(req, res) {  
-  let id = req.params.id;
-  EntriesSchema.findByIdAndUpdate(id, {$set: {likes: req.body.likes}}, (err, Entry) => {
-    if (!err) {
-      return res.status(200).send({message: 'Ok'});
-    } else {
+function LikeEntry(req, res) {
+  let Like = new LikesSchema();
+  Like.userId = req.params.userId;
+  Like.entryId = req.params.entryId;
+  Like.save((err, Like) => {
+    if (err) {
       return res.status(202).send({message: 'Error'});
+    } else {
+      let id = req.params.entryId;
+      EntriesSchema.findByIdAndUpdate(id, {$set: {likes: req.body.likes}}, (err, Entry) => {
+        if (!err) {
+          return res.status(200).send({message: 'Ok'});      
+        } else {
+          return res.status(202).send({message: 'Error'});
+        }
+      }); 
     }
-  });   
+  });  
+}
+
+function UnlikeEntry(req, res) {
+  let userId = req.params.userId;
+  let entryId = req.params.entryId;
+  LikesSchema.findByIdAndDelete({userId, entryId}, (err, Like) => {
+    if (err) {
+      return res.status(202).send({message: 'Error'});
+    } else {
+      let id = req.params.entryId;
+      EntriesSchema.findByIdAndUpdate(id, {$set: {likes: req.body.likes}}, (err, Entry) => {
+        if (!err) {
+          return res.status(200).send({message: 'Ok'});      
+        } else {
+          return res.status(202).send({message: 'Error'});
+        }
+      }); 
+    }
+  });  
 }
 
 module.exports = {
@@ -83,6 +112,7 @@ module.exports = {
   ReadEntry,
   ListEntries,
   ListEntriesByBusiness,
+  ListEntriesLikedByUser,
   LikeEntry,
   UnlikeEntry
 };

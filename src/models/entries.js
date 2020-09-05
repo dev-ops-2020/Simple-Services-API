@@ -17,15 +17,7 @@ const EntriesSchema = Schema(
     },
     date: {
       type: String
-    },/*
-    liked: {
-      type: Boolean,
-      default: false
     },
-    saved: {
-      type: Boolean,
-      default: false
-    },*/
     status: {
       type: Boolean,
       default: true
